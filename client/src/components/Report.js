@@ -1,21 +1,14 @@
-
-
-
-
-
+import Card from '@material-ui/core/Card';
+import { CardHeader } from '@material-ui/core';
 
 export default function Report() {
 	return (
-    <article>
-      <header>
-
-      </header>
-
-      <footer>
-        
-      </footer>
-
-    </article>
-  )
+		<Card
+			sx={{
+				maxWidth: 345
+			}}
+		>
+			
+		</Card>
+	);
 }
-
