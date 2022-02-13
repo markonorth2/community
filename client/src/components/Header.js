@@ -29,9 +29,10 @@ const theme = createTheme({
 const useStyles = makeStyles({
 	root: {
 		width: 450,
+    marginLeft:7
 	},
 	searchButton: {
-		marginLeft: 15,
+		marginLeft: 7,
     height:39
 	},
   menu: {
