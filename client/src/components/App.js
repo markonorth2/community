@@ -1,7 +1,15 @@
 import React from 'react';
-import './App.css';
+import '../styles/App.css';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
+
+import Header from './Header'
+
 import TextField from '@material-ui/core/TextField';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { Box, colors, withWidth } from '@material-ui/core';
@@ -52,24 +60,7 @@ function ButtonStyled() {
 
 function App() {
 	return (
-		<div className="App">
-			<header>
-				<ThemeProvider theme={theme}>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'center',
-							padding: 20
-						}}
-					>
-						<TextFieldStyled />
-						<ButtonStyled />
-					</Box>
-				
-				</ThemeProvider>
-			</header>
-		</div>
+		<Header />
 	);
 }
 
