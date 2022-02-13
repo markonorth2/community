@@ -19,7 +19,8 @@ const theme = createTheme({
 
 const useStyles = makeStyles({
 	root: {
-		width: 450
+		width: 450,
+		marginRight: 20
 	}
 });
 
@@ -35,8 +36,15 @@ function TextFieldStyled() {
 	);
 }
 function ButtonStyled() {
+	const classes = useStyles();
 	return (
-		<Button variant="contained" color='secondary'>
+		<Button
+			variant="contained"
+			color="secondary"
+			onClick={() => {
+				alert('clicked');
+			}}
+		>
 			Search
 		</Button>
 	);
@@ -52,12 +60,13 @@ function App() {
 							display: 'flex',
 							flexDirection: 'row',
 							justifyContent: 'center',
-							padding:20
+							padding: 20
 						}}
 					>
-							<TextFieldStyled />
-							<ButtonStyled />
+						<TextFieldStyled />
+						<ButtonStyled />
 					</Box>
+				
 				</ThemeProvider>
 			</header>
 		</div>
