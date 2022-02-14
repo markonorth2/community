@@ -1,0 +1,12 @@
+-- Drop and recreate services table
+
+DROP TABLE IF EXISTS services CASCADE;
+
+CREATE TABLE services (
+  id SERIAL PRIMARY KEY NOT NULL,
+  category_id INTEGER REFERENCES categories ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  image_url VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
