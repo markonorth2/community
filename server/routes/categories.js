@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
   // all routes will go here
   router.get('/', (req, res) => {
-    const command = "SELECT * FROM users";
+    const command = "SELECT * FROM categories";
     db.query(command).then(data => {
       res.json(data.rows);
     });
