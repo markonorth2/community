@@ -5,8 +5,6 @@ import '../styles/App.css';
 import Header from './Header';
 import Report from './Report';
 
-
-import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
@@ -21,6 +19,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
+
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
@@ -43,12 +44,10 @@ const useStyles = makeStyles({
 	root: {
 		display: 'flex',
 		justifyContent: 'center',
-		marginTop: 25,
-
+		marginTop: 0
 	},
 	sideBar: {
-		marginRight: 100,
-		
+		marginRight: 100
 	}
 });
 
@@ -56,14 +55,33 @@ function GridContainerStyled() {
 	const classes = useStyles();
 	return (
 		<Grid container spacing={2} className={classes.root}>
+			<SideBar />
+			<Report />
 
-				<SideBar />
-				<Report />
+			<Grid item md={2}>
+			<Typography>Analytics</Typography>
+				<QuestionAnswerIcon />
+				<Button size="small">Popular</Button>
+				<Button size="small">Your Recent</Button>
 
-				<Grid item md={2}>
-					<Paper>3</Paper>
-				</Grid>
-
+				<Card>
+					<CardHeader
+						avatar={<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />}
+						action={
+							<IconButton aria-label="settings">
+								<MoreVertIcon />
+							</IconButton>
+						}
+						title="X-Ray @ Jr Hospital"
+						subheader="January 26, 2022"
+					/>
+					<CardContent>
+						<Typography variant="body2" color="text.secondary">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit!
+						</Typography>
+					</CardContent>
+				</Card>
+			</Grid>
 		</Grid>
 	);
 }
