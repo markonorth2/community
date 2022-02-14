@@ -1,3 +1,6 @@
+-- Uncommend the line below if wants to drop example table urls
+-- DROP TABLE IF EXISTS urls CASCADE;
+
 -- Drop and recreate users table
 
 DROP TABLE IF EXISTS users CASCADE;
