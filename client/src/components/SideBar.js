@@ -72,7 +72,7 @@ function SideBarStyled() {
 					<ListItemIcon>
 				
 
-						<ListItemText primary="Users" />
+						<ListItemText primary="Friends" />
 					</ListItemIcon>
 				</ListItem>
 			</List>
