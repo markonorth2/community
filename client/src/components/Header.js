@@ -11,9 +11,12 @@ import TextField from '@material-ui/core/TextField';
 
 import '../styles/Header.css';
 
+import Report from './Report'
+
 import { Box, colors, Typography, withWidth } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+
 
 const theme = createTheme({
 	palette: {
@@ -88,6 +91,7 @@ function MenuStyled() {
 				<MenuItem value={'Medical'}>Medical</MenuItem>
 				<MenuItem value={'Technology'}>Technology</MenuItem>
 				<MenuItem value={'Engineering'}>Engineering</MenuItem>
+				<MenuItem value={'Costmetics'}>Costmetics</MenuItem>
 			</Select>
 		</FormControl>
 	);

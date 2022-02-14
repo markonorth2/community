@@ -5,6 +5,7 @@ import '../styles/App.css';
 import Header from './Header';
 import Report from './Report';
 
+
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -25,6 +26,7 @@ import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import SideBar from './SideBar';
 
 const theme = createTheme({
 	palette: {
@@ -50,71 +52,13 @@ const useStyles = makeStyles({
 	}
 });
 
-function SideBarStyled() {
-	const classes = useStyles();
-	return (
-		<Grid item md={1} className={classes.sideBar}>
-			<List>
-				<ListItem button divider>
-					<ListItemIcon>
-						<HomeIcon />
-						<ListItemText primary="Home" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button divider>
-					<ListItemIcon>
-						<PeopleIcon />
-						<ListItemText primary="Communities" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button>
-					<ListItemIcon>
-						<CategoryIcon />
-						<ListItemText primary="Categories" />
-					</ListItemIcon>
-				</ListItem>
-			</List>
-		</Grid>
-	);
-}
-
-function ReportStyled() {
-	const classes = useStyles();
-	return (
-		<Grid item md={4} className={classes.sideBar}>
-			<Card>
-				<CardHeader
-					avatar={<Avatar>J</Avatar>}
-					action={
-						<IconButton aria-label="settings">
-							<MoreVertIcon />
-						</IconButton>
-					}
-					title="X-Ray @ Jr Hospital"
-					subheader="January 26, 2022"
-				/>
-				<CardContent>
-					<Typography variant="body2" color="text.secondary">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</Typography>
-				</CardContent>
-			</Card>
-		</Grid>
-	);
-}
-
 function GridContainerStyled() {
 	const classes = useStyles();
 	return (
 		<Grid container spacing={2} className={classes.root}>
 
-				<SideBarStyled />
-				<ReportStyled />
+				<SideBar />
+				<Report />
 
 				<Grid item md={2}>
 					<Paper>3</Paper>
