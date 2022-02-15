@@ -44,7 +44,8 @@ const useStyles = makeStyles({
 	root: {
 		display: 'flex',
 		justifyContent: 'center',
-		marginTop: 0,
+		paddingTop: 25,
+		backgroundColor: "#DCE3E5"
 	},
 	sideBar: {
 		marginRight: 100

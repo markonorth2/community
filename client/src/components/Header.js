@@ -35,8 +35,6 @@ const useStyles = makeStyles({
 	textField: {
 		width: 450,
 		marginLeft: 7,
-	
-	
 	},
 	searchButton: {
 		marginLeft: 7,
@@ -116,7 +114,7 @@ function Header() {
 					display: 'flex',
 					flexDirection: 'row',
 					justifyContent: 'center',
-					marginBottom:25
+					
 				}}
 			>
 				<AppBar position="static" className="appbar">
