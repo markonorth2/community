@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
+import '../styles/SideBar.css';
+
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
@@ -15,20 +17,18 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: '#736372'
+			main: '#6096BA'
 		},
 		secondary: {
-			main: '#DCEED1'
+			main: '#6EEB83'
 		}
 	}
 });
 
 const useStyles = makeStyles({
 	sideBar: {
-		marginRight: 100,
-	},
-  sideBarItem: { 
-  }
+		marginRight: 125
+	}
 });
 
 function SideBarStyled() {
@@ -36,46 +36,62 @@ function SideBarStyled() {
 	return (
 		<Grid item md={1} className={classes.sideBar}>
 			<List>
-				<ListItem button divider className={classes.sideBarItem} >
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
-						<HomeIcon color={'#736372'} />
+						<HomeIcon className='material-icons' />
 						<ListItemText primary="Home" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem} >
-					<ListItemIcon >
-						<PeopleIcon />
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}} >
+					
+					<ListItemIcon>
+						<span class="material-icons">public</span>
 						<ListItemText primary="Communities" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
-					<ListItemIcon>
-						<CategoryIcon />
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
+					<ListItemIcon >
+						<CategoryIcon className='material-icons' />
 
 						<ListItemText primary="Categories" />
 					</ListItemIcon>
 				</ListItem>
 
-        <ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
-						
-
+						<span class="material-icons">medical_services</span>
 						<ListItemText primary="Services" />
 					</ListItemIcon>
 				</ListItem>
 
-        <ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
-				
-
+						<PeopleIcon className='material-icons' />
 						<ListItemText primary="Friends" />
 					</ListItemIcon>
 				</ListItem>
-			</List>
 
-      
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
+					<ListItemIcon>
+						<span class="material-icons">help</span>
+						<ListItemText primary="Help" />
+					</ListItemIcon>
+				</ListItem>
+			</List>
 		</Grid>
 	);
 }

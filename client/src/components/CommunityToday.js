@@ -15,7 +15,7 @@ function CommunityToday() {
 	return (
 		<Grid item md={2}>
 			<Typography>Community Today</Typography>
-			<QuestionAnswerIcon />
+			<QuestionAnswerIcon className='material-icons' />
 			<Button size="small">Popular</Button>
 			<Button size="small">Your Recent</Button>
 
@@ -28,7 +28,6 @@ function CommunityToday() {
 				</CardContent>
 			</Card>
 
-			
 			<Analytics />
 			<TopMembers />
 		</Grid>
