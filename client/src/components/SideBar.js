@@ -4,6 +4,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
+import '../styles/SideBar.css';
+
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
@@ -23,54 +25,59 @@ const theme = createTheme({
 
 const useStyles = makeStyles({
 	sideBar: {
-		marginRight: 100
+		marginRight: 125
 	}
 });
 
 function SideBarStyled() {
 	const classes = useStyles();
 	return (
-		<ThemeProvider theme={theme}>
-			<Grid item md={1} className={classes.sideBar}>
-				<List>
-					<ListItem button divider className={classes.sideBarItem}>
-						<ListItemIcon>
-							<HomeIcon color="primary" />
-							<ListItemText primary="Home" />
-						</ListItemIcon>
-					</ListItem>
+		<Grid item md={1} className={classes.sideBar}>
+			<List>
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<HomeIcon className='material-icons' />
+						<ListItemText primary="Home" />
+					</ListItemIcon>
+				</ListItem>
 
-					<ListItem button divider className={classes.sideBarItem}>
-						<ListItemIcon>
-							<span class="material-icons">public</span>
-							<ListItemText primary="Communities" />
-						</ListItemIcon>
-					</ListItem>
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<span class="material-icons">public</span>
+						<ListItemText primary="Communities" />
+					</ListItemIcon>
+				</ListItem>
 
-					<ListItem button divider className={classes.sideBarItem}>
-						<ListItemIcon>
-							<CategoryIcon color="primary" />
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<CategoryIcon className='material-icons' />
 
-							<ListItemText primary="Categories" />
-						</ListItemIcon>
-					</ListItem>
+						<ListItemText primary="Categories" />
+					</ListItemIcon>
+				</ListItem>
 
-					<ListItem button divider className={classes.sideBarItem}>
-						<ListItemIcon>
-							<span class="material-icons">medical_services</span>
-							<ListItemText primary="Services" />
-						</ListItemIcon>
-					</ListItem>
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<span class="material-icons">medical_services</span>
+						<ListItemText primary="Services" />
+					</ListItemIcon>
+				</ListItem>
 
-					<ListItem button divider className={classes.sideBarItem}>
-						<ListItemIcon>
-							<PeopleIcon color="primary" />
-							<ListItemText primary="Friends" />
-						</ListItemIcon>
-					</ListItem>
-				</List>
-			</Grid>
-		</ThemeProvider>
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<PeopleIcon className='material-icons' />
+						<ListItemText primary="Friends" />
+					</ListItemIcon>
+				</ListItem>
+
+				<ListItem button divider className={classes.sideBarItem}>
+					<ListItemIcon>
+						<span class="material-icons">help</span>
+						<ListItemText primary="Help" />
+					</ListItemIcon>
+				</ListItem>
+			</List>
+		</Grid>
 	);
 }
 

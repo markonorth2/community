@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 	root: {
 		display: 'flex',
 		justifyContent: 'center',
-		marginTop: 0
+		marginTop: 0,
 	},
 	sideBar: {
 		marginRight: 100
@@ -54,7 +54,7 @@ const useStyles = makeStyles({
 function GridContainerStyled() {
 	const classes = useStyles();
 	return (
-		<Grid container spacing={2} className={classes.root}>
+		<Grid container spacing={0} className={classes.root}>
 			<SideBar />
 			<Report />
 			<CommunityToday />
