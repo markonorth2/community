@@ -36,43 +36,56 @@ function SideBarStyled() {
 	return (
 		<Grid item md={1} className={classes.sideBar}>
 			<List>
-				<ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
 						<HomeIcon className='material-icons' />
 						<ListItemText primary="Home" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}} >
+					
 					<ListItemIcon>
 						<span class="material-icons">public</span>
 						<ListItemText primary="Communities" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
-					<ListItemIcon>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
+					<ListItemIcon >
 						<CategoryIcon className='material-icons' />
 
 						<ListItemText primary="Categories" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
 						<span class="material-icons">medical_services</span>
 						<ListItemText primary="Services" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
 						<PeopleIcon className='material-icons' />
 						<ListItemText primary="Friends" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem}>
+				<ListItem button divider className={classes.sideBarItem} onClick={() => {
+					alert('clicked');
+				}}>
 					<ListItemIcon>
 						<span class="material-icons">help</span>
 						<ListItemText primary="Help" />
