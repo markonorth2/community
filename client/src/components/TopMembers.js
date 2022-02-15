@@ -10,7 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 
 function TopMembers() {
 	return (
-		<section>
+		<Card>
 			<Typography>
 				<span class="material-icons">leaderboard</span> Top Members
 			</Typography>
@@ -26,7 +26,7 @@ function TopMembers() {
 			<Card>
 				<CardHeader avatar={<Avatar>L</Avatar>} title="Leon Task" subheader="89 Reports   25672 Candy" />
 			</Card>
-		</section>
+		</Card>
 	);
 }
 

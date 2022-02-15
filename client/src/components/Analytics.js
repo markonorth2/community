@@ -15,8 +15,8 @@ const useStyles = makeStyles({
 		marginBottom:5
 	},
 	box: {
-		borderLeft:"3px solid #6EEB83",
-		padding: 20,
+		borderLeft:"3px solid #6096BA",
+		padding: 15,
 		marginBottom: 8
 	}
 });
@@ -25,11 +25,11 @@ function AnalyticsStyled() {
 	const classes = useStyles();
 
 	return (
-		<section>
+		<Card>
 		<Typography>
 				<span class="material-icons">insights</span>Analytics
 			</Typography>
-		<Grid container direction="row" columns={2} spacing={1} className={classes.root}>
+		<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
 			<Grid item>
 				<Grid>
 					<Paper align="center" className={classes.box}>
@@ -60,7 +60,7 @@ function AnalyticsStyled() {
 				</Grid>
 			</Grid>
 		</Grid>
-		</section>
+		</Card>
 	);
 }
 

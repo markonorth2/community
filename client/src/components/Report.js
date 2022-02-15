@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import { CardContent } from '@material-ui/core';
+import { CardContent, TextField } from '@material-ui/core';
 import { CardHeader } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
@@ -11,16 +11,38 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+
 const useStyles = makeStyles({
 	report: {
 		marginRight: 100,	
+	},
+	newReport: {
+		width: 616,
+		marginBottom:25
 	}
 });
+
+function CreateReportField() {
+	const classes = useStyles();
+	return (
+
+			<TextField
+				id="outlined-basic"
+				className={classes.newReport}
+				label="Create New Report"
+				variant="outlined"
+				size={'small'}
+				color="secondary"
+				/>
+	
+	);
+}
 
 function ReportStyled() {
 	const classes = useStyles();
 	return (
 		<Grid item md={4} className={classes.report}>
+			<CreateReportField />
 			<Card>
 				<CardHeader
 					avatar={<Avatar>J</Avatar>}
