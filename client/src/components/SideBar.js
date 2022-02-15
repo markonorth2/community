@@ -14,6 +14,24 @@ import CategoryIcon from '@material-ui/icons/Category';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
+import axios from "axios";
+
+function testEditAxios() {
+  
+
+	return axios.put(`/users/1`, { 
+		first_name: 'Daniel',
+	  last_name: "Lu",
+	  email: "daniel@hotmail.com",
+	  user_name: "daniel_lu",
+	  password: "0000",
+	  description: "dev of this app",
+	  image_url: "null"})
+		.then((res) =>
+      console.log("user1 edited", res)			
+		)
+}
+
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -37,7 +55,7 @@ function SideBarStyled() {
 		<Grid item md={1} className={classes.sideBar}>
 			<List>
 				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
+					testEditAxios();
 				}}>
 					<ListItemIcon>
 						<HomeIcon className='material-icons' />
