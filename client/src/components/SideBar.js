@@ -8,10 +8,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
 
-
-
-
-
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 const theme = createTheme({
