@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 		marginBottom:5
 	},
 	box: {
-		borderLeft:"3px solid #6EEB83",
+		borderLeft:"3px solid #6096BA",
 		padding: 20,
 		marginBottom: 8
 	}
