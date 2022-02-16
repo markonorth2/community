@@ -33,8 +33,8 @@ function testEditAxios() {
 	// console.log("user1 edited", res)			
 // )
 
-	  return axios.put(`/reports/1`, 
-		{service_id: 1, user_id: 1, business_id: 1, review: "good review", price: 3.99, date: "2021-11-01", receipt_url: "no receipt"
+	  return axios.put(`/reward_points/1`, 
+		{reward_point: 20
 	})
 		.then((res) =>
       console.log("user1 edited", res)			
