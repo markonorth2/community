@@ -30,6 +30,7 @@ import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
 
 import Authentication from './Authentication';
+import Businesses from './Businesses.js';
 import { Link } from "react-router-dom";
 
 const theme = createTheme({
@@ -68,10 +69,22 @@ export function GridContainerStyled() {
 	);
 }
 
+
+
 function App() {
 	return (
 			<Authentication />
+			// <Businesses />
 	);
 }
 
+
+
+// function Businesses() {
+// 	return (
+// 			<Businesses />
+// 	);
+// }
+
 export default App;
+// export default Businesses;
