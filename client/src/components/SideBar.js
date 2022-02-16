@@ -15,6 +15,32 @@ import { Card } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
+import axios from "axios";
+
+//sample template to Add/Edit tables in server, delete for production
+// `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
+//possible table users, businesses, reports, services, categories, reward_points, ratings, 
+function testEditAxios() {
+
+	return axios.put(`/users/1`, { 
+		first_name: 'Daniel',
+	  last_name: "Lu",
+	  email: "daniel@hotmail.com",
+	  user_name: "daniel_lu",
+	  password: "0000",
+	  description: "dev of this app",
+	  image_url: "null"})
+		.then((res) =>
+      console.log("user1 edited", res)			
+		)
+}
+
+//sample template to Delete tables in server, delete for production
+// `users/1` means to delete the row with id = 1 in the users table 
+function testDeleteAxios() {
+	return axios.delete('/users/1')
+};
+
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -44,36 +70,6 @@ function SideBarStyled() {
 	const classes = useStyles();
 	return (
 		<Grid item md={1} className={classes.sideBar}>
-			<div className={classes.side}>
-				<List>
-					<ListItem
-						button
-						divider
-						className={classes.sideBarItem}
-						onClick={() => {
-							alert('clicked');
-						}}
-					>
-						<ListItemIcon>
-							<HomeIcon className={classes.icons} />
-							<ListItemText primary="Home" />
-						</ListItemIcon>
-					</ListItem>
-
-					<ListItem
-						button
-						divider
-						className={classes.sideBarItem}
-						onClick={() => {
-							alert('clicked');
-						}}
-					>
-						<ListItemIcon>
-							<span class="material-icons">public</span>
-							<ListItemText primary="Communities" />
-						</ListItemIcon>
-					</ListItem>
-
 					<ListItem
 						button
 						divider
