@@ -20,7 +20,7 @@ import axios from "axios";
 //sample template to Add/Edit tables in server, delete for production
 // `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
 //possible table users, businesses, reports, services, categories, reward_points, ratings, 
-function testEditAxios() {
+function testAddEditAxios() {
 
 	return axios.put(`/users/1`, { 
 		first_name: 'Daniel',
@@ -74,13 +74,13 @@ function SideBarStyled() {
 						divider
 						className={classes.sideBarItem}
 						onClick={() => {
-							alert('clicked');
+							testAddEditAxios();
 						}}
 					>
 						<ListItemIcon>
 							<CategoryIcon className={classes.icons} />
-
-							<ListItemText primary="Categories" />
+            {/* For production, please delete contents inside the ( ) below  */}
+							<ListItemText primary="Categories (TEMP ADD/EDIT BUTTON)" />
 						</ListItemIcon>
 					</ListItem>
 
@@ -89,12 +89,13 @@ function SideBarStyled() {
 						divider
 						className={classes.sideBarItem}
 						onClick={() => {
-							alert('clicked');
+							testDeleteAxios();
 						}}
 					>
 						<ListItemIcon>
 							<span class="material-icons">medical_services</span>
-							<ListItemText primary="Services" />
+							{/* For production, please delete contents inside the ( ) below  */}
+							<ListItemText primary="Services (TEMP DELETE BUTTON)" />
 						</ListItemIcon>
 					</ListItem>
 
