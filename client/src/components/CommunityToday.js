@@ -14,17 +14,6 @@ import Analytics from './Analytics';
 function CommunityToday() {
 	return (
 		<Grid item md={2}>
-			
-
-			{/* <Card>
-				<CardHeader avatar={<Avatar>J</Avatar>} title="X-Ray @ Jr Hospital Was OVERPRICED!!!" />
-				<CardContent>
-					<Typography variant="body2" color="text.secondary">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-					</Typography>
-				</CardContent>
-			</Card> */}
-
 			<Analytics />
 			<TopMembers />
 		</Grid>

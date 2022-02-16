@@ -68,6 +68,7 @@ function SideBarStyled() {
 	const classes = useStyles();
 	return (
 		<Grid item md={1} className={classes.sideBar}>
+			<List className={classes.side}>
 					<ListItem
 						button
 						divider
@@ -124,7 +125,7 @@ function SideBarStyled() {
 						</ListItemIcon>
 					</ListItem>
 				</List>
-			</div>
+	
 		</Grid>
 	);
 }
