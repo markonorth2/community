@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
+import Businesses from './components/Businesses'
 
 import Header from './components/Header';
 import { GridContainerStyled } from './components/App';
@@ -22,7 +23,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/home" element={<GridContainerStyled />} />
         <Route path="/" element={<App />} />
-        <Route path="/businesses" element ={<GridContainerStyled/> }/>
+        <Route path="/businesses" element ={<Businesses/> }/>
       </Routes>
 			
 		</React.StrictMode>
