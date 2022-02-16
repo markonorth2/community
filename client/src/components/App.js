@@ -9,8 +9,8 @@ import Report from './Report';
 import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
 import Authentication from './Authentication';
-
-import { Link } from 'react-router-dom';
+import Businesses from './Businesses.js';
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
 	palette: {
@@ -48,8 +48,22 @@ export function GridContainerStyled() {
 	);
 }
 
+
+
 function App() {
-	return <Authentication />;
+	return (
+			<Authentication />
+			// <Businesses />
+	);
 }
 
+
+
+// function Businesses() {
+// 	return (
+// 			<Businesses />
+// 	);
+// }
+
 export default App;
+// export default Businesses;
