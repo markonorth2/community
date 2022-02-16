@@ -1,24 +1,16 @@
-import React from 'react';
-
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import { Input, InputBase } from '@material-ui/core';
-
-import { Toolbar } from '@material-ui/core';
+import React, { useState } from 'react';
 
 import '../styles/Header.css';
 
-import Report from './Report';
-
-import { AppBar, Box, colors, Typography, withWidth } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { Toolbar } from '@material-ui/core';
+import { AppBar, Box, Typography} from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
-import { IconButton } from '@material-ui/core';
+
+
 
 const theme = createTheme({
 	palette: {

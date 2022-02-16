@@ -1,19 +1,20 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
+
+import { useNavigate } from 'react-router-dom';
+
 import { CardContent, TextField } from '@material-ui/core';
 import { CardHeader } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Avatar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
-
-import '../styles/Report.css';
 
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import { makeStyles } from '@material-ui/core/styles';
+import '../styles/Report.css';
 
 const useStyles = makeStyles({
 	report: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
 
 function CreateReportField() {
 	const classes = useStyles();
+	const navigate = useNavigate();
 	return (
 		<TextField
 			id="outlined-basic"
@@ -38,6 +40,7 @@ function CreateReportField() {
 			variant="outlined"
 			size={'small'}
 			color="lightgrey"
+			onClick={() => navigate('/report')}
 		/>
 	);
 }

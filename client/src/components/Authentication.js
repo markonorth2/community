@@ -4,10 +4,26 @@ import { TextField } from '@material-ui/core';
 import { Box } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import '../styles/Authentication.css';
 
 import earth from '../images/earth.jpg';
 
+const useStyles = makeStyles({
+  authenticationEmail: {
+    marginTop: 25
+  },
+  authenticationPassword: {
+    marginTop: 10,
+    marginBottom: 10
+  },
+  signUpBtn: {
+    width: 190,
+    margin:"auto"
+  }
+});
+
 function LoginButtonStyled() {
+	const classes = useStyles();
 	return (
 		<Button
 			variant="contained"
@@ -15,25 +31,15 @@ function LoginButtonStyled() {
 			onClick={() => {
 				alert('clicked');
 			}}
+			className={classes.signUpBtn}
 		>
-			Continue With Email<span class="material-icons">email</span>
+			Sign Up<span class="material-icons">email</span>
 		</Button>
 	);
 }
 
-const useStyles = makeStyles({
-  authenticationEmail:{
-    marginTop:25
-  },
-  authenticationPassword:{
-    marginTop:10,
-    marginBottom:10
-  }
-
-})
-
 function AuthenticationEmailStyled() {
-  const classes = useStyles()
+	const classes = useStyles();
 	return (
 		<TextField
 			id="outlined-basic"
@@ -41,14 +47,23 @@ function AuthenticationEmailStyled() {
 			variant="outlined"
 			size={'small'}
 			color="secondary"
-      className={classes.authenticationEmail}
+			className={classes.authenticationEmail}
 		/>
 	);
 }
 
 function AuthenticationPasswordStyled() {
-    const classes = useStyles()
-	return <TextField id="outlined-basic" label="Password" variant="outlined" size={'small'} color="secondary" className={classes.authenticationPassword} />;
+	const classes = useStyles();
+	return (
+		<TextField
+			id="outlined-basic"
+			label="Password"
+			variant="outlined"
+			size={'small'}
+			color="secondary"
+			className={classes.authenticationPassword}
+		/>
+	);
 }
 
 function Authentication() {
@@ -90,20 +105,21 @@ function Authentication() {
 						display: 'flex',
 						flexDirection: 'row',
 						justifyContent: 'center',
-						paddingTop: 100
+						paddingTop: 100,
+						gridGap: 100
 					}}
 				>
-					<Box>
+					<Box className="logo-steps">
 						<span class="material-icons">edit_note</span>
-            <Typography>Create a report</Typography>
+						<Typography>Create a report</Typography>
 					</Box>
-					<Box>
+					<Box className="logo-steps">
 						<span class="material-icons">question_answer</span>
-             <Typography>Dicuss in the community</Typography>
+						<Typography>Dicuss in the community</Typography>
 					</Box>
-					<Box>
+					<Box className="logo-steps">
 						<span class="material-icons">paid</span>
-             <Typography>Save money together!</Typography>
+						<Typography>Save money together!</Typography>
 					</Box>
 				</Box>
 			</Box>

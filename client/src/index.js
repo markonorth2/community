@@ -12,6 +12,7 @@ import {
   Route
 } from "react-router-dom";
 import { Grid } from '@material-ui/core';
+import NewReport from './components/NewReport';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -21,6 +22,7 @@ ReactDOM.render(
      
       <Routes>
         <Route path="/home" element={<GridContainerStyled />} />
+        <Route path="/report" element={<NewReport />} />
         <Route path="/" element={<App />} />
       </Routes>
 			
