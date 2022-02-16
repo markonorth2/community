@@ -22,7 +22,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/home" element={<GridContainerStyled />} />
         <Route path="/" element={<App />} />
-        <Route path="/businesses" element ={}/>
+        <Route path="/businesses" element ={<GridContainerStyled/> }/>
       </Routes>
 			
 		</React.StrictMode>
