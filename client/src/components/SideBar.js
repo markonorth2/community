@@ -28,10 +28,8 @@ function testEditAxios() {
 	  user_name: "daniel_lu",
 	  password: "0000",
 	  description: "dev of this app",
-	  image_url: "null"})
-		.then((res) =>
-      console.log("user1 edited", res)			
-		)
+	  image_url: "null"});		
+	 
 }
 
 //sample template to Delete tables in server, delete for production
