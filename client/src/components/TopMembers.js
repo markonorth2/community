@@ -9,7 +9,7 @@ import '../styles/TopMembers.css';
 
 function TopMembers() {
 	return (
-		<section className='topMembers'>
+		<Grid className='topMembers'>
 			<Typography>
 				<span class="material-icons">leaderboard</span> Top Members
 			</Typography>
@@ -25,7 +25,7 @@ function TopMembers() {
 			
 				<CardHeader avatar={<Avatar>L</Avatar>} title="Leon Task" subheader="89 Reports   25672 Candy" />
 			
-		</section>
+		</Grid>
 	);
 }
 

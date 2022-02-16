@@ -1,19 +1,20 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
+
+import { useNavigate } from 'react-router-dom';
+
 import { CardContent, TextField } from '@material-ui/core';
 import { CardHeader } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Avatar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
-
-import '../styles/Report.css';
 
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import { makeStyles } from '@material-ui/core/styles';
+import '../styles/Report.css';
 
 const useStyles = makeStyles({
 	report: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
 
 function CreateReportField() {
 	const classes = useStyles();
+	const navigate = useNavigate();
 	return (
 		<TextField
 			id="outlined-basic"
@@ -38,6 +40,7 @@ function CreateReportField() {
 			variant="outlined"
 			size={'small'}
 			color="lightgrey"
+			onClick={() => navigate('/report')}
 		/>
 	);
 }
@@ -58,6 +61,106 @@ function ReportStyled() {
 				<Button size="large">
 					<span class="material-icons">view_timeline</span> Your Recent
 				</Button>
+			</div>
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="X-Ray @ Jr Hospital"
+					subheader="January 26, 2022"
+				/>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</Typography>
+				</CardContent>
+			</div>
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="X-Ray @ Jr Hospital"
+					subheader="January 26, 2022"
+				/>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</Typography>
+				</CardContent>
+			</div>
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="X-Ray @ Jr Hospital"
+					subheader="January 26, 2022"
+				/>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</Typography>
+				</CardContent>
+			</div>
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="X-Ray @ Jr Hospital"
+					subheader="January 26, 2022"
+				/>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</Typography>
+				</CardContent>
+			</div>
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="X-Ray @ Jr Hospital"
+					subheader="January 26, 2022"
+				/>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</Typography>
+				</CardContent>
 			</div>
 			<div className="report">
 				<CardHeader

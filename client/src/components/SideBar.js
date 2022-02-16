@@ -16,6 +16,7 @@ import { Card } from '@material-ui/core';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import axios from "axios";
+import Home from '@material-ui/icons/Home';
 
 //sample template to Add/Edit tables in server, delete for production
 // `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
@@ -75,6 +76,38 @@ function SideBarStyled() {
 						className={classes.sideBarItem}
 						onClick={() => {
 							testAddEditAxios();
+						}}
+					>
+						<ListItemIcon>
+							<HomeIcon className={classes.icons} />
+
+							<ListItemText primary="Home" />
+						</ListItemIcon>
+					</ListItem>
+
+				<ListItem
+						button
+						divider
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
+						}}
+					>
+						<ListItemIcon>
+							<span class="material-icons">
+public
+</span>
+
+							<ListItemText primary="Communities" />
+						</ListItemIcon>
+					</ListItem>
+
+					<ListItem
+						button
+						divider
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
 						}}
 					>
 						<ListItemIcon>
