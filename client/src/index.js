@@ -2,13 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
+
+import Header from './components/Header';
+import { GridContainerStyled } from './components/App';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import { Grid } from '@material-ui/core';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<BrowserRouter>
+		<React.StrictMode>
+      <Header />
+     
+      <Routes>
+        <Route path="/home" element={<GridContainerStyled />} />
+        <Route path="/" element={<App />} />
+      </Routes>
+			
+		</React.StrictMode>
+	</BrowserRouter>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
