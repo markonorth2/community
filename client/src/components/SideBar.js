@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
@@ -11,6 +11,7 @@ import '../styles/SideBar.css';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
+import { Card } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
@@ -52,6 +53,14 @@ const theme = createTheme({
 const useStyles = makeStyles({
 	sideBar: {
 		marginRight: 125
+	},
+	side: {
+		backgroundColor: 'white',
+		marginRight: -25,
+		border: '1px solid lightgray'
+	},
+	icons: {
+		color: '#6096BA'
 	}
 });
 
@@ -59,63 +68,63 @@ function SideBarStyled() {
 	const classes = useStyles();
 	return (
 		<Grid item md={1} className={classes.sideBar}>
-			<List>
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					testEditAxios();
-				}}>
-					<ListItemIcon>
-						<HomeIcon className='material-icons' />
-						<ListItemText primary="Home (testClick to ADD/Edit)" />
-					</ListItemIcon>
-				</ListItem>
+					<ListItem
+						button
+						divider
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
+						}}
+					>
+						<ListItemIcon>
+							<CategoryIcon className={classes.icons} />
 
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					testDeleteAxios();
-				}} >
-					
-					<ListItemIcon>
-						<span class="material-icons">public</span>
-						<ListItemText primary="Communities (testClick to Delete)" />
-					</ListItemIcon>
-				</ListItem>
+							<ListItemText primary="Categories" />
+						</ListItemIcon>
+					</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
-				}}>
-					<ListItemIcon >
-						<CategoryIcon className='material-icons' />
+					<ListItem
+						button
+						divider
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
+						}}
+					>
+						<ListItemIcon>
+							<span class="material-icons">medical_services</span>
+							<ListItemText primary="Services" />
+						</ListItemIcon>
+					</ListItem>
 
-						<ListItemText primary="Categories" />
-					</ListItemIcon>
-				</ListItem>
+					<ListItem
+						button
+						divider
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
+						}}
+					>
+						<ListItemIcon>
+							<PeopleIcon className={classes.icons} />
+							<ListItemText primary="Friends" />
+						</ListItemIcon>
+					</ListItem>
 
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
-				}}>
-					<ListItemIcon>
-						<span class="material-icons">medical_services</span>
-						<ListItemText primary="Services" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
-				}}>
-					<ListItemIcon>
-						<PeopleIcon className='material-icons' />
-						<ListItemText primary="Friends" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
-				}}>
-					<ListItemIcon>
-						<span class="material-icons">help</span>
-						<ListItemText primary="Help" />
-					</ListItemIcon>
-				</ListItem>
-			</List>
+					<ListItem
+						button
+						className={classes.sideBarItem}
+						onClick={() => {
+							alert('clicked');
+						}}
+					>
+						<ListItemIcon>
+							<span class="material-icons">help</span>
+							<ListItemText primary="Help" />
+						</ListItemIcon>
+					</ListItem>
+				</List>
+			</div>
 		</Grid>
 	);
 }

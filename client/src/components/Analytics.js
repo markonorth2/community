@@ -4,20 +4,29 @@ import { CardHeader } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+
+import '../styles/Analytics.css';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
 	root: {
-		display:"flex",
-		justifyContent:"center",
-		marginTop:5,
-		marginBottom:5
+		display: 'flex',
+		justifyContent: 'center',
+		
+		marginBottom: 5
 	},
-	box: {
-		borderLeft:"3px solid #6096BA",
-		padding: 15,
-		marginBottom: 8
+	statSection: {
+		borderLeft: "solid 3px #6096BA",
+		paddingLeft: 15,
+		borderRadius:5
+	},
+	analyticsContainer: {
+		backgroundColor:'white',
+  	border:'1px solid lightgrey',
+		paddingTop:10,
+		marginBottom:19
 	}
 });
 
@@ -25,42 +34,42 @@ function AnalyticsStyled() {
 	const classes = useStyles();
 
 	return (
-		<Card>
-		<Typography>
+		<Box className={classes.analyticsContainer}>
+			<Typography>
 				<span class="material-icons">insights</span>Analytics
 			</Typography>
-		<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
-			<Grid item>
-				<Grid>
-					<Paper align="center" className={classes.box}>
-						<p>Reports</p>
-						<h1>247</h1>
-					</Paper>
+			<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
+				<Grid item>
+					<Grid className={classes.statSection}>
+						
+							<p>Reports</p>
+							<h2>247</h2>
+					
+					</Grid>
+					<Grid className={classes.statSection}>
+						
+							<p>Comments</p>
+							<h2>87</h2>
+					
+					</Grid>
 				</Grid>
-				<Grid>
-					<Paper align="center" className={classes.box}>
-						<p>Comments</p>
-						<h1>87</h1>
-					</Paper>
-				</Grid>
-			</Grid>
 
-			<Grid item>
-				<Grid>
-					<Paper align="center" className={classes.box}>
-						<p>Members</p>
-						<h1>3172</h1>
-					</Paper>
-				</Grid>
-				<Grid>
-					<Paper align="center" className={classes.box}>
-						<p>Filler</p>
-						<h1>27</h1>
-					</Paper>
+				<Grid item>
+					<Grid className={classes.statSection}>
+						
+							<p>Members</p>
+							<h2>3172</h2>
+				
+					</Grid>
+					<Grid className={classes.statSection}>
+						
+							<p>Filler</p>
+							<h2>27</h2>
+						
+					</Grid>
 				</Grid>
 			</Grid>
-		</Grid>
-		</Card>
+		</Box>
 	);
 }
 

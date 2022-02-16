@@ -1,3 +1,10 @@
 .material-icons {
   color: #6096BA;
 }
+
+.side {
+  background-color: white;
+  margin-right: -25px;
+  border: 1px solid lightgray;
+ 
+}
