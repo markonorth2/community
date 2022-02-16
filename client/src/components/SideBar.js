@@ -21,30 +21,21 @@ import axios from "axios";
 //possible table users, businesses, reports, services, categories, reward_points, ratings, 
 function testEditAxios() {
 
-	// return axios.put(`/users/1`, { 
-	// 	first_name: 'Daniel',
-	//   last_name: "Lu",
-	//   email: "daniel@hotmail.com",
-	//   user_name: "daniel_lu",
-	//   password: "0000",
-	//   description: "dev of this app",
-	//   image_url: "null"})
-	// .then((res) =>
-	// console.log("user1 edited", res)			
-// )
-
-	  return axios.put(`/reward_points/1`, 
-		{reward_point: 20
-	})
-		.then((res) =>
-      console.log("user1 edited", res)			
-		)
+	return axios.put(`/users/1`, { 
+		first_name: 'Daniel',
+	  last_name: "Lu",
+	  email: "daniel@hotmail.com",
+	  user_name: "daniel_lu",
+	  password: "0000",
+	  description: "dev of this app",
+	  image_url: "null"});		
+	 
 }
 
 //sample template to Delete tables in server, delete for production
 // `users/1` means to delete the row with id = 1 in the users table 
 function testDeleteAxios() {
-	return axios.delete('/reports/1')
+	return axios.delete('/users/1')
 };
 
 const theme = createTheme({
