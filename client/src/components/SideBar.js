@@ -14,6 +14,32 @@ import CategoryIcon from '@material-ui/icons/Category';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
+import axios from "axios";
+
+//sample template to Add/Edit tables in server, delete for production
+// `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
+//possible table users, businesses, reports, services, categories, reward_points, ratings, 
+function testEditAxios() {
+
+	return axios.put(`/users/1`, { 
+		first_name: 'Daniel',
+	  last_name: "Lu",
+	  email: "daniel@hotmail.com",
+	  user_name: "daniel_lu",
+	  password: "0000",
+	  description: "dev of this app",
+	  image_url: "null"})
+		.then((res) =>
+      console.log("user1 edited", res)			
+		)
+}
+
+//sample template to Delete tables in server, delete for production
+// `users/1` means to delete the row with id = 1 in the users table 
+function testDeleteAxios() {
+	return axios.delete('/users/1')
+};
+
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -37,21 +63,21 @@ function SideBarStyled() {
 		<Grid item md={1} className={classes.sideBar}>
 			<List>
 				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
+					testEditAxios();
 				}}>
 					<ListItemIcon>
 						<HomeIcon className='material-icons' />
-						<ListItemText primary="Home" />
+						<ListItemText primary="Home (testClick to ADD/Edit)" />
 					</ListItemIcon>
 				</ListItem>
 
 				<ListItem button divider className={classes.sideBarItem} onClick={() => {
-					alert('clicked');
+					testDeleteAxios();
 				}} >
 					
 					<ListItemIcon>
 						<span class="material-icons">public</span>
-						<ListItemText primary="Communities" />
+						<ListItemText primary="Communities (testClick to Delete)" />
 					</ListItemIcon>
 				</ListItem>
 

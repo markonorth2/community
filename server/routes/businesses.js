@@ -10,5 +10,15 @@ module.exports = (db) => {
     });
   });
 
+  router.get('/:id', (req, res) => {
+    const command = `SELECT * FROM businesses
+    WHERE `
+    db.query(command).then(data => {
+      res.json(data.rows);
+    });
+  });
+
+
+  
   return router;
 };
