@@ -1,12 +1,8 @@
-import { Card } from '@material-ui/core';
-import { CardContent } from '@material-ui/core';
-import { CardHeader } from '@material-ui/core';
+import '../styles/Analytics.css';
+
 import { Grid } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Box } from '@material-ui/core';
-
-import '../styles/Analytics.css';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
@@ -14,19 +10,19 @@ const useStyles = makeStyles({
 	root: {
 		display: 'flex',
 		justifyContent: 'center',
-		
+
 		marginBottom: 5
 	},
 	statSection: {
-		borderLeft: "solid 3px #6096BA",
+		borderLeft: 'solid 3px #6096BA',
 		paddingLeft: 15,
-		borderRadius:5
+		borderRadius: 5
 	},
 	analyticsContainer: {
-		backgroundColor:'white',
-  	border:'1px solid lightgrey',
-		paddingTop:10,
-		marginBottom:19
+		backgroundColor: 'white',
+		border: '1px solid lightgrey',
+		paddingTop: 10,
+		marginBottom: 19
 	}
 });
 
@@ -41,31 +37,23 @@ function AnalyticsStyled() {
 			<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
 				<Grid item>
 					<Grid className={classes.statSection}>
-						
-							<p>Reports</p>
-							<h2>247</h2>
-					
+						<p>Reports</p>
+						<h2>247</h2>
 					</Grid>
 					<Grid className={classes.statSection}>
-						
-							<p>Comments</p>
-							<h2>87</h2>
-					
+						<p>Comments</p>
+						<h2>87</h2>
 					</Grid>
 				</Grid>
 
 				<Grid item>
 					<Grid className={classes.statSection}>
-						
-							<p>Members</p>
-							<h2>3172</h2>
-				
+						<p>Members</p>
+						<h2>3172</h2>
 					</Grid>
 					<Grid className={classes.statSection}>
-						
-							<p>Filler</p>
-							<h2>27</h2>
-						
+						<p>Filler</p>
+						<h2>27</h2>
 					</Grid>
 				</Grid>
 			</Grid>
