@@ -9,7 +9,7 @@ import '../styles/TopMembers.css';
 
 function TopMembers() {
 	return (
-		<Grid className='topMembers'>
+		<Grid item lg={12} sm="none" xs={12} className='topMembers'>
 			<Typography>
 				<span class="material-icons">leaderboard</span> Top Members
 			</Typography>
