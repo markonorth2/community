@@ -11,12 +11,16 @@ import Box from '@mui/material/Box';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Rating from '@mui/material/Rating';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 
 
 function Copyright(props) {
@@ -33,7 +37,14 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: '#ff6d75',
+  },
+  '& .MuiRating-iconHover': {
+    color: '#ff3d47',
+  },
+});
 
 function NewReport() {
 
@@ -91,28 +102,29 @@ function NewReport() {
                   name="Service"
                 />
               </Grid>
-							<div>
-      					<FormControl sx={{ m: 1, minWidth: 500, mt: 3 }}>
-        					<InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
-        						<Select
-											labelId="demo-simple-select-helper-label"
-											id="demo-simple-select-helper"
-											value={age}
-											label="Category"
-											onChange={handleChange}
-        						>
-          					
-										<MenuItem value={10}>Dentistry</MenuItem>
-										<MenuItem value={20}>Hospital care</MenuItem>
-										<MenuItem value={30}>Massage</MenuItem>
-										<MenuItem value="">
-										<em>Other</em>
-										</MenuItem>
-					
-        						</Select>
-        					<FormHelperText>Select a category that best fits the service received</FormHelperText>
-      					</FormControl>
-    					</div>
+							
+							<Grid item xs={12} >
+							<FormControl fullWidth={true}>
+								<InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+									<Select
+										labelId="demo-simple-select-helper-label"
+										id="demo-simple-select-helper"
+										value={age}
+										label="Category"
+										onChange={handleChange}
+									>
+									
+									<MenuItem value={10}>Dentistry</MenuItem>
+									<MenuItem value={20}>Hospital care</MenuItem>
+									<MenuItem value={30}>Massage</MenuItem>
+									<MenuItem value="">
+									<em>Other</em>
+									</MenuItem>
+				
+									</Select>
+								<FormHelperText>Select a category that best fits the service received</FormHelperText>
+							</FormControl>
+    					</Grid>
               <Grid item xs={12}>
                 <TextField 
 									type="number"
@@ -173,6 +185,7 @@ function NewReport() {
       </Container>
     </ThemeProvider>
 	
+		
 	);
 }
 
