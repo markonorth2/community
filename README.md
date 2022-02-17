@@ -15,7 +15,12 @@ GIVE POWER TO CUSTOMERS
 ## Tech Stack
 
 - JavaScript 
-- Node V 16.14.0
+- Node v16.14.0
 - React Router V6 
 - Material UI 
-- Nodemon 
+- Nodemon
+- Redux v4.1.2
+- Axios
+- Bcrypt
+- Cookie sessions
+- PG
