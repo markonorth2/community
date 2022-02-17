@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Paper } from '@material-ui/core';
+import { Grid} from '@material-ui/core';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
@@ -11,12 +11,11 @@ import '../styles/SideBar.css';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
-import { Card } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import axios from 'axios';
-import Home from '@material-ui/icons/Home';
+import Home from '@material-ui/icons /Home';
 
 //sample template to Add/Edit tables in server, delete for production
 // `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)

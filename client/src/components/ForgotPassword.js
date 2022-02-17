@@ -10,7 +10,7 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import PasswordIcon from '@mui/icons-material/Password';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -28,7 +28,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function SignIn() {
+function ForgotPassword() {
 	const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -68,10 +68,10 @@ function SignIn() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <PasswordIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Forgot password?
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -84,32 +84,18 @@ function SignIn() {
                 autoComplete="email"
                 autoFocus
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Send me password reset instructions
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="/forgotpassword" variant="body2">
-                    Forgot password?
+                  <Link href="/signin" variant="body2">
+                    Remembered your password? Sign In
                   </Link>
                 </Grid>
                 <Grid item>
@@ -128,4 +114,4 @@ function SignIn() {
 	);
 }
 
-export default SignIn;
+export default ForgotPassword;
