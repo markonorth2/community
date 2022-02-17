@@ -1,10 +1,18 @@
 .reportBtns {
   background-color: white;
   border: 1px solid lightgrey;
+  
 }
 
 .report {
   background-color: white;
   border: 1px solid lightgrey;
   margin-top: 20px;
+}
+
+.selected {
+  color: #6096BA !important;
+}
+.unselected {
+  color: lightgray !important;
 }

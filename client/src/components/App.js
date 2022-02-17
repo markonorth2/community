@@ -1,34 +1,13 @@
-import { Avatar, Box, Card, CardHeader } from '@material-ui/core';
 import React from 'react';
-import '../styles/App.css';
-
-import Header from './Header';
-import Report from './Report';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-
-import { CardContent } from '@material-ui/core';
-
-import HomeIcon from '@material-ui/icons/Home';
-import PeopleIcon from '@material-ui/icons/People';
-import CategoryIcon from '@material-ui/icons/Category';
-
-import ListItemButton from '@material-ui/core';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-
-import { Typography } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import '../styles/App.css';
+
+import { Grid } from '@material-ui/core';
+
+import Report from './Report';
 import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
-
 import Authentication from './Authentication';
 import { Link } from "react-router-dom";
 
@@ -55,7 +34,7 @@ const useStyles = makeStyles({
 	}
 });
 
-// Container for all home page components 
+// Container for all home page components
 export function GridContainerStyled() {
 	const classes = useStyles();
 	return (
@@ -63,15 +42,27 @@ export function GridContainerStyled() {
 			<SideBar />
 			<Report />
 			<CommunityToday />
-			<Link to="/">logout</Link>
+			<Link to="/signin">logout</Link>
 		</Grid>
 	);
 }
 
+
+
 function App() {
 	return (
 			<Authentication />
+			// <Businesses />
 	);
 }
 
+
+
+// function Businesses() {
+// 	return (
+// 			<Businesses />
+// 	);
+// }
+
 export default App;
+// export default Businesses;
