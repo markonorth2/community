@@ -32,8 +32,10 @@ const useStyles = makeStyles({
 		marginRight: 100
 	},
 	newReport: {
-		width: 616,
-		marginBottom: 20
+		width: 611,
+		
+		marginBottom: 20,
+		backgroundColor:'#FFFFFF',
 	},
 	communityToday: {
 		marginBottom: 25
@@ -50,7 +52,6 @@ function CreateReportField() {
 			label="Create New Report"
 			variant="outlined"
 			size={'small'}
-			color="lightgrey"
 			onClick={() => navigate('/report')}
 		/>
 	);
@@ -62,7 +63,7 @@ function ReportStyled() {
 	const dispatch = useDispatch();
 
 	return (
-		<Grid item md={4} className={classes.report}>
+		<Grid item md={4} large={6} sm={6} xs={9} className={classes.report}>
 			<CreateReportField />
 			<div className="reportBtns">
 				<Button

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../styles/Header.css';
 
@@ -173,7 +173,8 @@ function Header() {
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
-							flexDirection: 'row'
+							flexDirection: 'row',
+							margin:"auto"
 						}}
 					>
 						<Typography
@@ -184,10 +185,29 @@ function Header() {
 						>
 							Community
 						</Typography>
-						<TextFieldStyled />
-						<CategorySearchStyled />
-						<LocationFieldStyled />
-						<SearchButtonStyled />
+						<Box
+							sx={{
+								flexGrow: 2
+							}}
+						>
+							<TextFieldStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<CategorySearchStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<LocationFieldStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<SearchButtonStyled />
+						</Box>
+
 						<span class="material-icons">account_circle</span>
 					</Box>
 				</Toolbar>

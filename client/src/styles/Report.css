@@ -11,8 +11,8 @@
 }
 
 .selected {
-  color: #6096BA;
+  color: #6096BA !important;
 }
 .unselected {
-  color: lightgray
+  color: lightgray !important;
 }
