@@ -22,6 +22,11 @@ import { recent } from '../actions';
 import { popular } from '../actions';
 import { your_recent } from '../actions';
 
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
+import { display } from '@mui/system';
+
 const useStyles = makeStyles({
 	report: {
 		marginRight: 100
@@ -55,60 +60,35 @@ function ReportStyled() {
 	const classes = useStyles();
 	const display = useSelector((state) => state.display);
 	const dispatch = useDispatch();
+
 	return (
 		<Grid item md={4} className={classes.report}>
 			<CreateReportField />
 			<div className="reportBtns">
-				<Button size="large" onClick={() => dispatch(popular())}>
-					<span class="material-icons">local_fire_department</span>
+				<Button
+					className={display === 'POPULAR' ? 'selected' : 'unselected'}
+					size="large"
+					onClick={() => dispatch(popular())}
+				>
+					<LocalFireDepartmentIcon />
 					Popular
 				</Button>
-				<Button size="large" onClick={() => dispatch(recent())}>
-					<span class="material-icons">access_time_filled</span> Recent
+				<Button
+					className={display === 'RECENT' ? 'selected' : 'unselected'}
+					size="large"
+					onClick={() => dispatch(recent())}
+				>
+					<AccessTimeFilledIcon />
+					Recent
 				</Button>
-				<Button size="large" onClick={() => dispatch(your_recent())}>
-					<span class="material-icons">view_timeline</span> Your Recent
+				<Button
+					className={display === 'YOUR_RECENT' ? 'selected' : 'unselected'}
+					size="large"
+					onClick={() => dispatch(your_recent())}
+				>
+					<ViewTimelineIcon />
+					Your Recent
 				</Button>
-			</div>
-			<div className="report">
-				<CardHeader
-					avatar={<Avatar>J</Avatar>}
-					action={
-						<IconButton aria-label="settings">
-							<MoreVertIcon />
-						</IconButton>
-					}
-					title="X-Ray @ Jr Hospital"
-					subheader="January 26, 2022"
-				/>
-				<CardContent>
-					<Typography variant="body2" color="text.secondary">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</Typography>
-				</CardContent>
-			</div>
-			<div className="report">
-				<CardHeader
-					avatar={<Avatar>J</Avatar>}
-					action={
-						<IconButton aria-label="settings">
-							<MoreVertIcon />
-						</IconButton>
-					}
-					title="X-Ray @ Jr Hospital"
-					subheader="January 26, 2022"
-				/>
-				<CardContent>
-					<Typography variant="body2" color="text.secondary">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</Typography>
-				</CardContent>
 			</div>
 			<div className="report">
 				<CardHeader
