@@ -13,7 +13,7 @@ CREATE TABLE users (
   user_name VARCHAR (255) NOT NULL,
   password VARCHAR (255) NOT NULL,
   description TEXT,
-  image_url VARCHAR (255) NOT NULL,
+  image_url VARCHAR (255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -20,6 +20,20 @@ module.exports = (db) => {
     });
   });
 
+  // create new user 
+  router.put('/', (req, res) => {
+    
+    //req.body is axios put command's second parameter
+    const { first_name, last_name, email, user_name, password, } = req.body;
+
+    db.query(
+      `INSERT INTO users (first_name, last_name, email, user_name, password)
+       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text)`,
+      [first_name, last_name, email, user_name, password]
+    )
+      .catch(error => console.log(error));
+  });
+
   // create/edit new user - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed
   router.put("/:id", (req, res) => {
     

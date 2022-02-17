@@ -73,7 +73,7 @@ function SideBarStyled() {
 					divider
 					className={classes.sideBarItem}
 					onClick={() => {
-						testAddEditAxios();
+						alert('clicked');
 					}}
 				>
 					<ListItemIcon>
@@ -103,7 +103,7 @@ function SideBarStyled() {
 					divider
 					className={classes.sideBarItem}
 					onClick={() => {
-						alert('clicked');
+						testAddEditAxios();
 					}}
 				>
 					<ListItemIcon>
