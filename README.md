@@ -2,7 +2,7 @@
 
 Community is the platform for consumers to help one another. Together, we can help increase transparency and quality of services provided by businesses all around the world.
 
-GIVE POWER TO CUSTOMERS
+GIVE POWER BACK TO CONSUMERS FROM BUSINESSES
 
 ## Founders
 
