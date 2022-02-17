@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import axios from 'axios';
+
 
 function Copyright(props) {
   return (
@@ -36,7 +38,13 @@ function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+      first_name: data.get('firstName'),
+      last_name: data.get('lastName'),
+      user_name: data.get('userName')
     });
+    let userObj = { first_name: data.get('firstName'), last_name: data.get('lastName'), user_name: data.get('userName'), password: data.get('password'), email: data.get('email') }
+    
+    return axios.put('users/', userObj)
   };
 
   return (
@@ -96,7 +104,7 @@ function SignUp() {
                   fullWidth
                   id="username"
                   label="Username"
-                  name="username"
+                  name="userName"
                   autoComplete="username"
                 />
               </Grid>
