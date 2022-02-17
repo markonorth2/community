@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../styles/Header.css';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Toolbar } from '@material-ui/core';
-import { AppBar, Box, Typography} from '@material-ui/core';
+import { AppBar, Box, Typography } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
-
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const theme = createTheme({
 	palette: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 190	,
+		width: 190,
 		marginLeft: 7
 	}
 });
@@ -173,7 +173,8 @@ function Header() {
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
-							flexDirection: 'row'
+							flexDirection: 'row',
+							margin:"auto"
 						}}
 					>
 						<Typography
@@ -184,10 +185,29 @@ function Header() {
 						>
 							Community
 						</Typography>
-						<TextFieldStyled />
-						<CategorySearchStyled />
-						<LocationFieldStyled />
-						<SearchButtonStyled />
+						<Box
+							sx={{
+								flexGrow: 2
+							}}
+						>
+							<TextFieldStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<CategorySearchStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<LocationFieldStyled />
+						</Box>
+						<Box sx={{
+							flexGrow:1
+						}}>
+							<SearchButtonStyled />
+						</Box>
+
 						<span class="material-icons">account_circle</span>
 					</Box>
 				</Toolbar>

@@ -1,27 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
-import Businesses from './components/Businesses'
-import Categories from './components/Categories'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import ForgotPassword from './components/ForgotPassword'
 
+import ForgotPassword from './components/ForgotPassword'
+import App from './components/App';
+import Businesses from './components/Businesses';
+import Categories from './components/Categories';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import Header from './components/Header';
 import { GridContainerStyled } from './components/App';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import NewReport from './components/NewReport';
 // import reportWebVitals from './reportWebVitals';
 
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 ReactDOM.render(
-	<BrowserRouter>
+<Provider store={store}>
+  <BrowserRouter>
 		<React.StrictMode>
       <Header />
      
@@ -37,7 +40,9 @@ ReactDOM.render(
       </Routes>
 			
 		</React.StrictMode>
-	</BrowserRouter>,
+	</BrowserRouter>
+</Provider>
+  ,
 	document.getElementById('root')
 );
 

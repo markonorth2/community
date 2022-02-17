@@ -5,7 +5,7 @@ import Analytics from './Analytics';
 
 function CommunityToday() {
 	return (
-		<Grid item md={2}>
+		<Grid item md={2} sm={3}>
 			<Analytics />
 			<TopMembers />
 		</Grid>
