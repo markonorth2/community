@@ -15,7 +15,7 @@ import CategoryIcon from '@material-ui/icons/Category';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import axios from 'axios';
-import Home from '@material-ui/icons /Home';
+import Home from '@material-ui/icons/Home';
 
 //sample template to Add/Edit tables in server, delete for production
 // `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
