@@ -16,7 +16,6 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 
 import axios from 'axios';
 
-
 //sample template to Add/Edit tables in server, delete for production
 // `users/1` means to editing id = 1 from users table if id = 1 doesn't exist, system will add a new row with id = 1(create new)
 //possible table users, businesses, reports, services, categories, reward_points, ratings,

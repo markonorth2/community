@@ -9,7 +9,6 @@ import Report from './Report';
 import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
 import Authentication from './Authentication';
-import Businesses from './Businesses.js';
 import { Link } from "react-router-dom";
 
 const theme = createTheme({
@@ -43,7 +42,7 @@ export function GridContainerStyled() {
 			<SideBar />
 			<Report />
 			<CommunityToday />
-			<Link to="/">logout</Link>
+			<Link to="/signin">logout</Link>
 		</Grid>
 	);
 }
