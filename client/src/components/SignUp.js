@@ -17,10 +17,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      
+        Created by Daniel Lu, Mark Chuang, Jaylen Patterson 
+      {" "}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -123,7 +122,7 @@ function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 5, mb: 2 }}
             >
               Sign Up
             </Button>
