@@ -16,6 +16,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
 import '../styles/Report.css';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { recent } from '../actions';
+import { popular } from '../actions';
+import { your_recent } from '../actions';
+
 const useStyles = makeStyles({
 	report: {
 		marginRight: 100
@@ -47,18 +53,20 @@ function CreateReportField() {
 
 function ReportStyled() {
 	const classes = useStyles();
+	const display = useSelector((state) => state.display);
+	const dispatch = useDispatch();
 	return (
 		<Grid item md={4} className={classes.report}>
 			<CreateReportField />
 			<div className="reportBtns">
-				<Button size="large">
+				<Button size="large" onClick={() => dispatch(popular())}>
 					<span class="material-icons">local_fire_department</span>
 					Popular
 				</Button>
-				<Button size="large">
+				<Button size="large" onClick={() => dispatch(recent())}>
 					<span class="material-icons">access_time_filled</span> Recent
 				</Button>
-				<Button size="large">
+				<Button size="large" onClick={() => dispatch(your_recent())}>
 					<span class="material-icons">view_timeline</span> Your Recent
 				</Button>
 			</div>
