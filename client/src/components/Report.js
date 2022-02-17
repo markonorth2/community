@@ -29,7 +29,9 @@ import { display } from '@mui/system';
 
 import axios from 'axios';
 
-
+function getReports() {
+	return axios.get(`/reports`).then(res => console.log(res));
+}
 
 const useStyles = makeStyles({
 	report: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
 	newReport: {
 		width: 611,
 		marginBottom: 20,
-		backgroundColor:'#FFFFFF',
+		backgroundColor: '#FFFFFF'
 	},
 	communityToday: {
 		marginBottom: 25
@@ -72,7 +74,7 @@ function ReportStyled() {
 				<Button
 					className={display === 'POPULAR' ? 'selected' : 'unselected'}
 					size="large"
-					onClick={() => dispatch(popular())}
+					onClick={() => getReports()}
 				>
 					<LocalFireDepartmentIcon />
 					Popular
