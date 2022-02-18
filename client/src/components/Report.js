@@ -30,7 +30,7 @@ import { display } from '@mui/system';
 import axios from 'axios';
 
 function getReports() {
-	return axios.get(`/reports`).then(res => console.log(res));
+	return axios.get(`/reports`).then(res => console.log(res.data));
 }
 
 const useStyles = makeStyles({
