@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@unicef/material-ui-currency-textfield": "^0.8.6",
     "axios": "^0.26.0",
     "i": "^0.3.7",
     "nodemon": "^2.0.15",

@@ -20,7 +20,9 @@ import Select from '@mui/material/Select';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 
+// Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
 
 function Copyright(props) {
@@ -49,6 +51,7 @@ const StyledRating = styled(Rating)({
 function NewReport() {
 
 	const [age, setAge] = React.useState('');
+	const [value, setValue] = React.useState();
 	const handleChange = (event) => {
 	setAge(event.target.value);
 	};
@@ -91,6 +94,51 @@ function NewReport() {
                   id="businessName"
                   label="Business Name"
                   autoFocus
+									placeholder="e.g., McDonald's"
+                />
+              </Grid>
+							<Grid item xs={12} >
+                <TextField
+                  name="Address"
+                  required
+                  fullWidth
+                  id="businessName"
+                  label="Address of Business"
+                  autoFocus
+									placeholder="e.g., 9999 Finch Avenue"
+                />
+              </Grid>
+							<Grid item xs={12} >
+                <TextField
+                  name="City"
+                  required
+                  fullWidth
+                  id="city"
+                  label="City"
+                  autoFocus
+									placeholder="e.g., Toronto or Log Angeles"
+                />
+              </Grid>
+							<Grid item xs={12} >
+                <TextField
+                  name="City"
+                  required
+                  fullWidth
+                  id="city"
+                  label="Province/State"
+                  autoFocus
+									placeholder="e.g., Ontario or California"
+                />
+              </Grid>
+							<Grid item xs={12} >
+                <TextField
+                  name="Country"
+                  required
+                  fullWidth
+                  id="city"
+                  label="Country"
+                  autoFocus
+									placeholder="e.g., Canada or United States"
                 />
               </Grid>
               <Grid item xs={12} >
@@ -98,7 +146,8 @@ function NewReport() {
                   required
                   fullWidth
                   id="service"
-                  label="Service Received (E.g., X-ray)"
+                  label="Service Received"
+									placeholder="e.g., X-ray or Teeth-Cleaning"
                   name="Service"
                 />
               </Grid>
@@ -125,7 +174,7 @@ function NewReport() {
 								<FormHelperText>Select a category that best fits the service received</FormHelperText>
 							</FormControl>
     					</Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField 
 									type="number"
                   required
@@ -133,7 +182,21 @@ function NewReport() {
                   id="price"
                   label="Price (Please enter a number)"
                   name="Price"
+									placeholder="e.g., 50"
                 />
+              </Grid> */}
+							<Grid item xs={12}>
+								<CurrencyTextField
+									label="Price of the service"
+									variant="standard"
+									value={value}
+									currencySymbol="$"
+									outputFormat="number"
+									onChange={(event, value)=> setValue(value)}
+									placeholder="e.g., $50"
+									textAlign="left"
+									fullWidth
+    						/>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -143,19 +206,36 @@ function NewReport() {
                   name="Review"
 									multiline={true}
       						rows={4}
+									placeholder="e.g., The massage felt really good. However, the masseuse had a really bad attitude. This is why I gave a good product rating but a bad customer service rating."
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />	
-              </Grid>
+
+							<Grid  
+								item xs={12} 
+								sx={{
+									'& > legend': { mt: 2 },
+								}}
+							>
+								<Typography component="legend">Customer Service Rating (Out of 10)</Typography>
+								<StyledRating
+									name="customer_service_rating"
+									defaultValue={2}
+									max={10}
+									getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+									precision={0.5}
+									icon={<FavoriteIcon fontSize="inherit" />}
+									emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+								/>
+								<Typography component="legend">Product Rating (Out of 10)</Typography>
+								<Rating 
+								name="product_rating" 
+								defaultValue={2} 
+								max={10}
+								precision={0.5} 
+								/>
+
+							</Grid>
+              
 							
               <Grid item xs={12}>
                 <FormControlLabel
@@ -164,21 +244,18 @@ function NewReport() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 5, mb: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/signin" variant="body2">
-                  Already have an account? Sign In
-                </Link>
-              </Grid>
-            </Grid>
+            
+						<Button
+							type="submit"
+							fullWidth
+							variant="contained"
+							sx={{ mt: 5, mb: 2 }}
+							href="/home"
+						>
+							Submit Report
+						</Button>
+						
+            
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

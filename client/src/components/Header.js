@@ -71,7 +71,7 @@ function TextFieldStyled() {
 	return (
 		<TextField
 			id="outlined-basic"
-			label="Service or Business"
+			label="Search for a Service or Business!"
 			placeholder="e.g., Massage or McDonald's"
 			variant="outlined"
 			size={'small'}
@@ -95,7 +95,7 @@ function LocationFieldStyled() {
 	return (
 		<TextField
 			variant="outlined"
-			label="Location"
+			label="Choose a City (Optional)"
 			size={'small'}
 			color="#FFFFFF"
 			InputLabelProps={{
@@ -117,7 +117,7 @@ function CategorySearchStyled() {
 	return (
 		<TextField
 			variant="outlined"
-			label="Category"
+			label="Choose a Category (Optional)"
 			size={'small'}
 			color="#FFFFFF"
 			InputLabelProps={{
