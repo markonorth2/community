@@ -74,8 +74,6 @@ function NewReport() {
     });
   };
 
-
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -105,7 +103,7 @@ function NewReport() {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
                     fullWidth
-										label="Date of Visit"
+                    label="Date of Visit"
                     value={date}
                     onChange={(newValue) => {
                       setDate(newValue);
@@ -229,6 +227,14 @@ function NewReport() {
                   fullWidth
                 />
               </Grid>
+              <Grid item xs={12}>
+                <Button variant="contained" component="label">
+                  Upload Your Receipt
+                  <input type="file" hidden />
+                </Button>
+               
+              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   fullWidth
