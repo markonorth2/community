@@ -11,7 +11,7 @@ module.exports = (db) => {
   });
 
   // get value of a user by id
-  router.get('/:id', (req, res) => {
+  router.get('/get/:id', (req, res) => {
     const command = `SELECT * FROM users
     WHERE id = $1::integer`; 
     const value = [req.params.id];
@@ -20,7 +20,23 @@ module.exports = (db) => {
     });
   });
 
-  // create new user 
+  //for sign-in page, return password by email as wildcard
+  router.get('/signin/:email', (req, res) => {
+    const command = `SELECT password FROM users
+    WHERE email = $1::text`; 
+    const value = [req.params.email];
+    db.query(command, value).then(data => {
+      // password is the password from db
+      // const password = data.rows[0].password;
+      // console.log('password', data.rows[0].password);
+      // const formPassword = req.query.formPassword;
+      // console.log('req', req)
+      console.log("data.row", data.rows);
+      res.json(data.rows);
+    });
+  });
+
+  // for sign-up page, create new user 
   router.put('/', (req, res) => {
     
     //req.body is axios put command's second parameter
