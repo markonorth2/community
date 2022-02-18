@@ -20,7 +20,15 @@ import Select from '@mui/material/Select';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import CurrencyTextField from '@unicef/material-ui-currency-textfield'
+
+
+import CurrencyTextField from '@unicef/material-ui-currency-textfield' // need to install with --legacy-peer-deps
+
+// date-fns
+import DateAdapter from '@mui/lab/AdapterDateFns'; // npm i @mui/lab
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+
 
 // Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
@@ -52,6 +60,7 @@ function NewReport() {
 
 	const [age, setAge] = React.useState('');
 	const [value, setValue] = React.useState();
+	const [value1, setValue1] = React.useState(new Date('2014-08-18T21:11:54'));
 	const handleChange = (event) => {
 	setAge(event.target.value);
 	};
@@ -64,6 +73,10 @@ function NewReport() {
       email: data.get('email'),
       password: data.get('password'),
     });
+  };
+
+	const handleChange1 = (newValue1) => {
+    setValue1(newValue1);
   };
 
   return (
@@ -235,6 +248,19 @@ function NewReport() {
 								/>
 
 							</Grid>
+							{/* <LocalizationProvider dateAdapter={DateAdapter}> 
+								
+									<DesktopDatePicker
+										label="Date desktop"
+										inputFormat="MM/dd/yyyy"
+										value1={value1}
+										onChange={handleChange}
+										renderInput={(params) => <TextField {...params} />}
+									/>
+									
+							
+							</LocalizationProvider> */}
+
               
 							
               <Grid item xs={12}>
