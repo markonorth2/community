@@ -33,17 +33,20 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 450,
+		width: 300,
+		marginTop: 10,
 		marginLeft: 7
 	},
 	searchButton: {
 		marginLeft: 7,
-		height: 39
+		height: 39,
+		marginTop: 10
 	},
 	menu: {
-		width: 150,
+		width: 300,
 		marginLeft: 7,
 		marginRight: 7,
+		marginTop: 20,
 		color: '#FFFFFF'
 	},
 	locationSearch: {
@@ -51,8 +54,15 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 190,
+		width: 300,
+		marginTop: 10,
 		marginLeft: 7
+	},
+
+	logo: {
+		color: "pink",
+		marginRight: 70
+		// alignItems: "left"
 	}
 });
 
@@ -61,7 +71,8 @@ function TextFieldStyled() {
 	return (
 		<TextField
 			id="outlined-basic"
-			label="Service, Corporation, Category"
+			label="Search for a Service or Business!"
+			placeholder="e.g., Massage or McDonald's"
 			variant="outlined"
 			size={'small'}
 			InputLabelProps={{
@@ -84,7 +95,7 @@ function LocationFieldStyled() {
 	return (
 		<TextField
 			variant="outlined"
-			label="Location"
+			label="Choose a City (Optional)"
 			size={'small'}
 			color="#FFFFFF"
 			InputLabelProps={{
@@ -106,7 +117,7 @@ function CategorySearchStyled() {
 	return (
 		<TextField
 			variant="outlined"
-			label="Category"
+			label="Choose a Category (Optional)"
 			size={'small'}
 			color="#FFFFFF"
 			InputLabelProps={{
@@ -165,6 +176,7 @@ function SearchButtonStyled() {
 // }
 
 function Header() {
+	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
 			<AppBar position="static" className="appbar">
@@ -178,10 +190,12 @@ function Header() {
 						}}
 					>
 						<Typography
-							variant="h6"
+							variant="h3"
 							noWrap
 							component="div"
 							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+							className= {classes.logo}
+							
 						>
 							Community
 						</Typography>
