@@ -1,4 +1,5 @@
-const displayReducer = (state = 'POPULAR', action) => {
+const displayReducer = (state = null, action) => {
+	console.log('hereiam', state)
 	switch (action.type) {
 		case 'RECENT':
 			return 'RECENT';
@@ -7,7 +8,7 @@ const displayReducer = (state = 'POPULAR', action) => {
 		case 'POPULAR':
 			return 'POPULAR';
 		default:
-			return 'POPULAR';
+			return action.type;
 	}
 };
 

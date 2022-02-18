@@ -1,12 +1,14 @@
 import displayReducer from './displayReport';
 import loggedReducer from './isLogged';
+import feedDataReducer from './feedData';
 
 import { combineReducers } from 'redux';
-import { display } from '@mui/system';
+
 
 const rootReducer = combineReducers({
   display: displayReducer,
-  logged: loggedReducer
+  logged: loggedReducer,
+  feed: feedDataReducer,
 })
 
 export default rootReducer
