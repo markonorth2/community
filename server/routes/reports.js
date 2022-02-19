@@ -11,21 +11,21 @@ module.exports = (db) => {
 	});
 
 	router.get('/popular', (req, res) => {
-		const command = 'SELECT * FROM reports';
+		const command = 'SELECT *, user_name FROM reports JOIN users ON user_id = users.id';
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
 	});
 
 	router.get('/recent', (req, res) => {
-		const command = 'SELECT * FROM reports ORDER BY created_at DESC';
+		const command = 'SELECT * FROM reports JOIN users ON user_id = users.id ORDER BY reports.created_at DESC';
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
 	});
 
 	router.get('/your_reports', (req, res) => {
-		const command = 'SELECT * FROM reports WHERE id = 1';
+		const command = 'SELECT * FROM reports JOIN users ON user_id = users.id WHERE user_id = 1';
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
@@ -37,7 +37,6 @@ module.exports = (db) => {
 			res.json(data.rows);
 		});
 	});
-
 
 	// get value of a report by id
 	router.get('/:id', (req, res) => {
@@ -74,3 +73,18 @@ module.exports = (db) => {
 
 	return router;
 };
+
+/*
+
+SELECT *, user_name FROM reports 
+JOIN users ON user_id = users.id;
+
+///
+
+SELECT * FROM reports JOIN users ON user_id = users.id ORDER BY reports.created_at DESC
+
+///
+
+SELECT * FROM reports JOIN users ON user_id = users.id
+
+*/
