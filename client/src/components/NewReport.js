@@ -43,15 +43,8 @@ function Copyright(props) {
       {"."}
     </Typography>
   );
-};
-
-
-function NewReportContainer() {
-	return (
-		console.log("Hi")
-	)
-
 }
+
 
 const theme = createTheme();
 
@@ -314,4 +307,4 @@ function NewReport() {
   );
 }
 
-export default { NewReport, NewReportContainer } 
+export default NewReport;
