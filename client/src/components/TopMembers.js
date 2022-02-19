@@ -7,7 +7,10 @@ import { Grid } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { CardHeader } from '@material-ui/core';
 
+import CakeIcon from '@mui/icons-material/Cake';
+
 import '../styles/TopMembers.css';
+import Cake from '@mui/icons-material/Cake';
 
 function TopMembers() {
 	// const [ userReportCount, setUserReportCount ] = useState('loading..');
@@ -25,9 +28,9 @@ function TopMembers() {
 	};
 
 	const memberList = userCandyCount.map((member) => {
-
+		const letter = member.user[0]
 		return (
-			<CardHeader avatar={<Avatar>M</Avatar>} title={member.user} subheader={`172 Reports  ${member.candy} Candy`} />
+			<CardHeader avatar={<Avatar>{letter}</Avatar>} title={member.user} subheader={`${member.candy} Candy `} />
 		)
 	})
 
@@ -42,43 +45,3 @@ function TopMembers() {
 }
 
 export default TopMembers;
-
-/*
-
-
-'
-SELECT user_name as user, reward_point as candy
-FROM users
-JOIN reward_points ON users.id = user_id
-ORDER BY reward_point
-DESC
-LIMIT 10;
-
-///
-
-SELECT reward_point, user_id 
-FROM reward_points
-JOIN users ON user_id = users.id
-ORDER BY reward_point
-DESC
-LIMIT 10;
-
-
-
-
-
-
-*/
-
-/*
-
-
-'SELECT * 
-FROM users
-JOIN reward_points ON users.id = user_id
-JOIN reports ON users.id = user_id`
-
-
-
-
-*/
