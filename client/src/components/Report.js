@@ -9,7 +9,6 @@ import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Avatar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
 
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -17,28 +16,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
 import '../styles/Report.css';
 
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-
-import { current_feed_data, recent } from '../actions';
-import { popular } from '../actions';
-import { your_recent } from '../actions';
-
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 
 import axios from 'axios';
-
-function getReports() {
-	return axios.get(`/reports`);
-}
-
-// need useState for selected tab
-
-// change state => return axios call
-
-// console.log data from axios
 
 const useStyles = makeStyles({
 	report: {
@@ -71,18 +53,68 @@ function CreateReportField() {
 
 const ReportStyled = () => {
 	const classes = useStyles();
-	const display = useSelector((state) => state.display);
-	// const feed = useSelector((state) => state.feed);
-	const dispatch = useDispatch();
+	const [ display, setDisplay ] = useState('POPULAR');
+	const [ displayReport, setDisplayReport ] = useState([]);
 
+	useEffect(
+		() => {
+			setStateFeed('POPULAR');
+		},
+		[ setDisplay ]
+	);
 	const setStateFeed = (actionType) => {
-		getReports().then((reports) => {
-			const reportsArr = reports.data;
-			dispatch(actionType);
-			dispatch(current_feed_data(reportsArr));
-		});
+		switch (actionType) {
+			case 'POPULAR':
+				return axios.get(`/reports/popular`).then((reports) => {
+					setDisplayReport(reports.data);
+					setDisplay(actionType);
+				});
+
+			case 'RECENT':
+				return axios.get(`/reports/recent`).then((reports) => {
+					setDisplayReport(reports.data);
+					setDisplay(actionType);
+				});
+
+			case 'YOUR_REPORTS':
+				return axios.get(`/reports/your_reports`).then((reports) => {
+					setDisplayReport(reports.data);
+					setDisplay(actionType);
+				});
+
+			default:
+				return axios.get(`/reports/popular`).then((reports) => {
+					setDisplayReport(reports.data);
+					setDisplay(actionType);
+				});
+		}
 	};
 
+	const singleReview = displayReport.map((report) => {
+		console.log(report);
+		return (
+			<div className="report">
+				<CardHeader
+					avatar={<Avatar>J</Avatar>}
+					action={
+						<IconButton aria-label="settings">
+							<MoreVertIcon />
+						</IconButton>
+					}
+					title="USERNAME - RELEVANT POST TITLE"
+					subheader={report.date}
+				/>
+				<CardContent>
+					<Typography variant="body1" color="text.secondary">
+						- {report.price}
+					</Typography>
+					<Typography variant="body2" color="text.secondary">
+						{report.review}
+					</Typography>
+				</CardContent>
+			</div>
+		);
+	});
 	return (
 		<Grid item md={4} large={6} sm={6} xs={9} className={classes.report}>
 			<CreateReportField />
@@ -90,7 +122,7 @@ const ReportStyled = () => {
 				<Button
 					className={display === 'POPULAR' ? 'selected' : 'unselected'}
 					size="large"
-					onClick={() => setStateFeed(popular())}
+					onClick={() => setStateFeed('POPULAR')}
 				>
 					<LocalFireDepartmentIcon />
 					Popular
@@ -98,22 +130,24 @@ const ReportStyled = () => {
 				<Button
 					className={display === 'RECENT' ? 'selected' : 'unselected'}
 					size="large"
-					onClick={() => setStateFeed(recent())}
+					onClick={() => setStateFeed('RECENT')}
 				>
 					<AccessTimeFilledIcon />
 					Recent
 				</Button>
 				<Button
-					className={display === 'YOUR_RECENT' ? 'selected' : 'unselected'}
+					className={display === 'YOUR_REPORTS' ? 'selected' : 'unselected'}
 					size="large"
-					onClick={() => setStateFeed(your_recent())}
+					onClick={() => setStateFeed('YOUR_REPORTS')}
 				>
 					<ViewTimelineIcon />
 					Your Recent
 				</Button>
 			</div>
 
-			{/* <div className="feed">{tempArr.id}</div> */}
+			<div className="feed">
+				<h2>{singleReview}</h2>
+			</div>
 		</Grid>
 	);
 };
