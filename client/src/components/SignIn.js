@@ -14,6 +14,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import axios from 'axios';
+
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -28,6 +31,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+
+
 function SignIn() {
 	const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,6 +41,19 @@ function SignIn() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+    });
+
+    return axios.get(`users/signin/${data.get('email')}`
+    )
+    //res.data[0].password is the password associated with the email entered
+    .then((res) => {
+      const password = res.data[0].password;
+      console.log("password", password);
+      if (password === data.get('password')) {
+        console.log('password match, user can log in');
+      } else {
+        console.log('password is incorrect');
+      }
     });
   };
   

@@ -20,7 +20,7 @@ GIVE POWER BACK TO CONSUMERS FROM BUSINESSES
 - Material UI 
 - Nodemon
 - Redux v4.1.2
-- Axios
-- Bcrypt
+- Axios v0.26.0
+- Bcrypt v5.0.1
 - Cookie sessions
 - PG
