@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import Header from './components/Header';
 import NewReport from './components/NewReport';
 import { GridContainerStyled } from './components/App';
+import SideBarStyled from './components/SideBar';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -31,7 +32,7 @@ ReactDOM.render(
      
       <Routes>
         <Route path="/home" element={<GridContainerStyled />} />
-        <Route path="/report" element={<NewReport />} />
+        <Route path="/report" element={ <>    <NewReport /> <SideBarStyled />  </> } />
         <Route path="/" element={<App />} />
         <Route path="/businesses" element ={<Businesses/> }/>
         <Route path="/categories" element ={<Categories/> }/>

@@ -43,6 +43,14 @@ function Copyright(props) {
       {"."}
     </Typography>
   );
+};
+
+
+function NewReportContainer() {
+	return (
+		console.log("Hi")
+	)
+
 }
 
 const theme = createTheme();
@@ -230,7 +238,7 @@ function NewReport() {
               <Grid item xs={12}>
                 <Button variant="contained" component="label">
                   Upload Your Receipt
-                  <input type="file" hidden />
+                  <input type="file" />
                 </Button>
                
               </Grid>
@@ -306,4 +314,4 @@ function NewReport() {
   );
 }
 
-export default NewReport;
+export default { NewReport, NewReportContainer } 
