@@ -1,8 +1,12 @@
+import React, { useEffect, useState } from 'react';
+
 import '../styles/Analytics.css';
 
 import { Grid } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Box } from '@material-ui/core';
+
+import axios from 'axios';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
@@ -29,6 +33,27 @@ const useStyles = makeStyles({
 function AnalyticsStyled() {
 	const classes = useStyles();
 
+	const [ reportCount, setReportCount ] = useState('loading..');
+	const [ userCount, setUserCount ] = useState('loading..');
+	// const [ displayReport, setDisplayReport ] = useState([]);
+
+	useEffect(() => {
+		getReportCount();
+		getUserCount();
+	}, []);
+
+	const getReportCount = () => {
+		return axios.get(`/reports/count_reports`).then((count) => {
+			setReportCount(count.data[0].count);
+		});
+	};
+
+	const getUserCount = () => {
+		return axios.get(`/users/count_users`).then((count) => {
+			setUserCount(count.data[0].count);
+		});
+	};
+
 	return (
 		<Box className={classes.analyticsContainer}>
 			<Typography>
@@ -37,24 +62,24 @@ function AnalyticsStyled() {
 			<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
 				<Grid item>
 					<Grid className={classes.statSection}>
-						<p>Reports</p>
-						<h2>247</h2>
-					</Grid>
-					<Grid className={classes.statSection}>
-						<p>Comments</p>
-						<h2>87</h2>
+						<p>Members</p>
+						<h2>{userCount}</h2>
 					</Grid>
 				</Grid>
 
 				<Grid item>
 					<Grid className={classes.statSection}>
+						<p>Reports</p>
+						<h2>{reportCount}</h2>
+					</Grid>
+					{/* <Grid className={classes.statSection}>
 						<p>Members</p>
 						<h2>3172</h2>
 					</Grid>
 					<Grid className={classes.statSection}>
 						<p>Filler</p>
 						<h2>27</h2>
-					</Grid>
+					</Grid> */}
 				</Grid>
 			</Grid>
 		</Box>
