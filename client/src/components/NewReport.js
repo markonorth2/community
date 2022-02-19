@@ -39,6 +39,7 @@ function Copyright(props) {
 	);
 }
 
+
 const theme = createTheme();
 
 const StyledRating = styled(Rating)({
@@ -168,28 +169,61 @@ function NewReport() {
 								/>
 							</Grid>
 
-							<Grid item xs={12}>
-								<FormControl fullWidth={true}>
-									<InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
-									<Select
-										labelId="demo-simple-select-helper-label"
-										id="demo-simple-select-helper"
-										value={age}
-										label="Category"
-										onChange={handleChange}
-									>
-										<MenuItem value={10}>Dentistry</MenuItem>
-										<MenuItem value={20}>Hospital care</MenuItem>
-										<MenuItem value={30}>Massage</MenuItem>
-										<MenuItem value="">
-											<em>Other</em>
-										</MenuItem>
-									</Select>
-									<FormHelperText>
-										Select a category that best fits the service received
-									</FormHelperText>
-								</FormControl>
-							</Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth={true}>
+                  <InputLabel id="demo-simple-select-helper-label">
+                    Category
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={age}
+                    label="Category"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={10}>Dentistry</MenuItem>
+                    <MenuItem value={20}>Hospital care</MenuItem>
+                    <MenuItem value={30}>Massage</MenuItem>
+                    <MenuItem value="">
+                      <em>Other</em>
+                    </MenuItem>
+                  </Select>
+                  <FormHelperText>
+                    Select a category that best fits the service received
+                  </FormHelperText>
+                </FormControl>
+              </Grid>
+              {/* <Grid item xs={12}>
+                <TextField 
+									type="number"
+                  required
+                  fullWidth
+                  id="price"
+                  label="Price (Please enter a number)"
+                  name="Price"
+									placeholder="e.g., 50"
+                />
+              </Grid> */}
+              <Grid item xs={12}>
+                <CurrencyTextField
+                  label="Price of the service"
+                  variant="standard"
+                  value={value}
+                  currencySymbol="$"
+                  outputFormat="number"
+                  onChange={(event, value) => setValue(value)}
+                  placeholder="e.g., $50"
+                  textAlign="left"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="contained" component="label">
+                  Upload Your Receipt
+                  <input type="file" />
+                </Button>
+               
+              </Grid>
 
 							<Grid item xs={12}>
 								<CurrencyTextField
