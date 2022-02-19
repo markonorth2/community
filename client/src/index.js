@@ -9,11 +9,12 @@ import Categories from './components/Categories';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Header from './components/Header';
+import NewReport from './components/NewReport';
 import { GridContainerStyled } from './components/App';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-import NewReport from './components/NewReport';
+
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

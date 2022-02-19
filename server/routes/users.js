@@ -11,13 +11,43 @@ module.exports = (db) => {
   });
 
   // get value of a user by id
-  router.get('/:id', (req, res) => {
+  router.get('/get/:id', (req, res) => {
     const command = `SELECT * FROM users
     WHERE id = $1::integer`; 
     const value = [req.params.id];
     db.query(command, value).then(data => {
       res.json(data.rows);
     });
+  });
+
+  //for sign-in page, return password by email as wildcard
+  router.get('/signin/:email', (req, res) => {
+    const command = `SELECT password FROM users
+    WHERE email = $1::text`; 
+    const value = [req.params.email];
+    db.query(command, value).then(data => {
+      // password is the password from db
+      // const password = data.rows[0].password;
+      // console.log('password', data.rows[0].password);
+      // const formPassword = req.query.formPassword;
+      // console.log('req', req)
+      console.log("data.row", data.rows);
+      res.json(data.rows);
+    });
+  });
+
+  // for sign-up page, create new user 
+  router.put('/', (req, res) => {
+    
+    //req.body is axios put command's second parameter
+    const { first_name, last_name, email, user_name, password, } = req.body;
+
+    db.query(
+      `INSERT INTO users (first_name, last_name, email, user_name, password)
+       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text)`,
+      [first_name, last_name, email, user_name, password]
+    )
+      .catch(error => console.log(error));
   });
 
   // create/edit new user - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed
