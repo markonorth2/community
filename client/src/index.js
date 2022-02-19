@@ -24,7 +24,7 @@ ReactDOM.render(
 <BrowserRouter>
 		<Routes>
 			<Route path="/home" element={<GridContainerStyled />} />
-			<Route path="/report" element={<NewReport />} />
+			<Route path="/report" element={ <> <NewReport />  <SideBarStyled /> </>} />
 			<Route path="/" element={<App />} />
 			<Route path="/businesses" element={<Businesses />} />
 			<Route path="/categories" element={<Categories />} />
