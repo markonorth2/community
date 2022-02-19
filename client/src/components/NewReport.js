@@ -27,6 +27,7 @@ import CurrencyTextField from "@unicef/material-ui-currency-textfield"; // need 
 import AdapterDateFns from "@mui/lab/AdapterDateFns"; // npm i @mui/lab
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+import axios from "axios";
 
 // Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
@@ -57,11 +58,11 @@ const StyledRating = styled(Rating)({
 });
 
 function NewReport() {
-  const [age, setAge] = React.useState("");
+  const [category, setCategory] = React.useState("");
   const [value, setValue] = React.useState();
   const [date, setDate] = React.useState(null);
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCategory(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -69,9 +70,47 @@ function NewReport() {
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+      category: category,
+      value: value,
+      rating: data.get('product_rating')
     });
+    let businessObj = {
+      category_id: category,
+      name: data.get('Business Name'),
+      city: data.get('City'),
+      province_state: data.get('Province'),
+      country: data.get('Country'),
+      street_address: data.get('Address')
+    };
+    console.log('businessObj', businessObj);
+    let serviceObj = {
+      category_id: category,
+      name: data.get('Service'),
+    };
+    console.log('serviceObj', serviceObj);
+    let reportObj = {
+      service_id: null,
+      user_id: null,
+      business_id: null,
+      review: data.get('Review'),
+      price: value,
+      date: date
+    }
+    console.log('reportObj', reportObj)
+    let ratingObj = {
+      business_id: null,
+      report_id: null,
+      customer_service_rating: data.get('customer_service_rating'),
+      product_rating: data.get('product_rating')
+    }
+    console.log('ratingObj', ratingObj);
+
+    return Promise.all([
+      axios.put('/businesses', businessObj),
+      axios.put('/services', serviceObj),
+      axios.put('/reports')
+  
+  ])
   };
 
   return (
@@ -148,10 +187,10 @@ function NewReport() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  name="City"
+                  name="Province"
                   required
                   fullWidth
-                  id="city"
+                  id="province"
                   label="Province/State"
                   autoFocus
                   placeholder="e.g., Ontario or California"
@@ -187,13 +226,13 @@ function NewReport() {
                   <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={age}
+                    value={category}
                     label="Category"
                     onChange={handleChange}
                   >
-                    <MenuItem value={10}>Dentistry</MenuItem>
-                    <MenuItem value={20}>Hospital care</MenuItem>
-                    <MenuItem value={30}>Massage</MenuItem>
+                    <MenuItem value={1}>Health Care</MenuItem>
+                    <MenuItem value={2}>Automobile Sales</MenuItem>
+                    <MenuItem value={3}>Education</MenuItem>
                     <MenuItem value="">
                       <em>Other</em>
                     </MenuItem>
@@ -294,7 +333,7 @@ function NewReport() {
               fullWidth
               variant="contained"
               sx={{ mt: 5, mb: 2 }}
-              href="/home"
+              // href="/home"
             >
               Submit Report
             </Button>

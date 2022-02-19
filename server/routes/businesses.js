@@ -24,7 +24,7 @@ module.exports = (db) => {
   router.put("/:id", (req, res) => {
     
     //req.body is axios put command's second parameter
-    console.log('req.body', req.body)
+    
     const { category_id, name, city, province_state, country, unit_number, street_address, postal_code, phone_number, website_url, image_url } = req.body;
 
     db.query(
