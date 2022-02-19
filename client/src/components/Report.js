@@ -101,12 +101,13 @@ const ReportStyled = () => {
 							<MoreVertIcon />
 						</IconButton>
 					}
-					title="USERNAME - RELEVANT POST TITLE"
-					subheader={report.date}
+					title={`BUSINESS NAME- TYPE OF SERVICE - ${report.price}`}
+					subheader={report.created_at}
 				/>
 				<CardContent>
 					<Typography variant="body1" color="text.secondary">
-						- {report.price}
+						 {`Product Rating: 5.5`}			 
+						 {/* {`Customer Service Rating: 9`} */}
 					</Typography>
 					<Typography variant="body2" color="text.secondary">
 						{report.review}
