@@ -91,11 +91,11 @@ const ReportStyled = () => {
 	};
 
 	const singleReview = displayReport.map((report) => {
-		console.log(report);
+		const letter = report.user_name[0];
 		return (
 			<div className="report">
 				<CardHeader
-					avatar={<Avatar>J</Avatar>}
+					avatar={<Avatar>{letter}</Avatar>}
 					action={
 						<IconButton aria-label="settings">
 							<MoreVertIcon />
@@ -106,8 +106,8 @@ const ReportStyled = () => {
 				/>
 				<CardContent>
 					<Typography variant="body1" color="text.secondary">
-						 {`Product Rating: 5.5`}			 
-						 {/* {`Customer Service Rating: 9`} */}
+						{`Product Rating: 5.5`}
+						{/* {`Customer Service Rating: 9`} */}
 					</Typography>
 					<Typography variant="body2" color="text.secondary">
 						{report.review}

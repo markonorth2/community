@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useNavigate } from 'react-router';
 
 import '../styles/Header.css';
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 300,
+		width: 400,
 		marginTop: 10,
 		marginLeft: 7
 	},
@@ -54,15 +55,17 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 300,
+		width: 250,
 		marginTop: 10,
 		marginLeft: 7
 	},
 
 	logo: {
-		color: "pink",
-		marginRight: 70
-		// alignItems: "left"
+		color: '#DCE3E5',
+		marginRight: 7,
+		'&:hover': {
+			color: '#FFFFFF'
+		}
 	}
 });
 
@@ -177,6 +180,7 @@ function SearchButtonStyled() {
 
 function Header() {
 	const classes = useStyles();
+	// const navigate = useNavigate();
 	return (
 		<ThemeProvider theme={theme}>
 			<AppBar position="static" className="appbar">
@@ -186,7 +190,7 @@ function Header() {
 							display: 'flex',
 							justifyContent: 'center',
 							flexDirection: 'row',
-							margin:"auto"
+							margin: 'auto'
 						}}
 					>
 						<Typography
@@ -194,8 +198,10 @@ function Header() {
 							noWrap
 							component="div"
 							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-							className= {classes.logo}
-							
+							className={classes.logo}
+							// onClick={() => {
+							// 	navigate('/')
+							// }}
 						>
 							Community
 						</Typography>
@@ -206,19 +212,25 @@ function Header() {
 						>
 							<TextFieldStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<CategorySearchStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<LocationFieldStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<SearchButtonStyled />
 						</Box>
 
