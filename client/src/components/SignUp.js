@@ -44,7 +44,7 @@ function SignUp() {
     });
     let userObj = { first_name: data.get('firstName'), last_name: data.get('lastName'), user_name: data.get('userName'), password: data.get('password'), email: data.get('email') }
     
-    return axios.put('users/', userObj)
+    return axios.put('users/new', userObj)
   };
 
   return (

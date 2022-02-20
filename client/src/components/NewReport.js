@@ -65,7 +65,16 @@ function NewReport() {
     setCategory(event.target.value);
   };
 
+  const generateRandomString = function() {
+    let random = Math.floor(Math.random() * 100000000);
+    return random;
+  };
+
   const handleSubmit = (event) => {
+    const newBusinessID = generateRandomString();
+    const newServiceID = generateRandomString();
+    const newReportID = generateRandomString();
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -74,7 +83,9 @@ function NewReport() {
       value: value,
       rating: data.get('product_rating')
     });
+    //retrieve businesses info
     let businessObj = {
+      // id: newBusinessID,
       category_id: category,
       name: data.get('Business Name'),
       city: data.get('City'),
@@ -83,34 +94,82 @@ function NewReport() {
       street_address: data.get('Address')
     };
     console.log('businessObj', businessObj);
+    
+    //retrieve services info
     let serviceObj = {
+      // id: newServiceID,
       category_id: category,
       name: data.get('Service'),
     };
     console.log('serviceObj', serviceObj);
+    
+    //retrieve reports info
     let reportObj = {
-      service_id: null,
-      user_id: null,
-      business_id: null,
+      // id: newReportID,
+      // service_id: newServiceID,
+      user_id: 1,
+      // business_id: newBusinessID,
       review: data.get('Review'),
       price: value,
       date: date
     }
     console.log('reportObj', reportObj)
+    
+    //retrieve ratings info
     let ratingObj = {
-      business_id: null,
-      report_id: null,
+      // business_id: newBusinessID,
+      // report_id: newReportID,
       customer_service_rating: data.get('customer_service_rating'),
       product_rating: data.get('product_rating')
     }
     console.log('ratingObj', ratingObj);
+    
+    // function newBusiness() {
+      //   return axios.post('/businesses/new', businessObj);
+      // };
+      
+      // function newService() {
+        //   return axios.post('/services/new', serviceObj);
+        // }
+        
+        // function newReport() {
+          //   return axios.post('/reports/new', reportObj);
+    // }
+    
+    // function newRating() {
+    //   return axios.post('/ratings/new', ratingObj);
+    // }
+    
+    // newBusiness();
+    // newService();
+    // newReport();
+    // newRating();
+    let businessId = '';
+    axios.post('/businesses/new', businessObj)
+    .then((res) => {
+      // console.log('creating service', res.data.id);
+      businessId = res.data.id;
+      return axios.post('/services/new', serviceObj);
+    })
+    .then((res) => {
+      console.log('creating report', res.data.id);
+      return axios.post('/reports/new', {
+        ...reportObj,
+        business_id: businessId,
+        service_id: res.data.id
+      });
+    })
+    .then((res) => {
+      console.log('creating ratings', res);
+      return axios.post('/ratings/new', {
+        ...ratingObj,
+        business_id: businessId,
+        report_id: res.data.id
 
-    return Promise.all([
-      axios.put('/businesses', businessObj),
-      axios.put('/services', serviceObj),
-      axios.put('/reports')
-  
-  ])
+      });
+    })
+    .catch((err) => {console.log(err)});
+
   };
 
   return (
