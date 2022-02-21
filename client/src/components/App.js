@@ -8,6 +8,7 @@ import { Grid } from '@material-ui/core';
 import Report from './Report';
 import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
+import Authentication from './Authentication';
 
 
 import SignIn from './SignIn'
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'center',
 		paddingTop: 25,
+		backgroundColor: '#DCE3E5'
 		
 
 	},
@@ -55,7 +57,7 @@ export function GridContainerStyled() {
 
 function App() {
 	return (
-		<SignIn />
+		<Authentication />
 	);
 }
 
