@@ -27,10 +27,9 @@ ReactDOM.render(
         <Route
           path="/report"
           element={
-            <>
-              {" "}
-              <NewReport /> <SideBarStyled />{" "}
-            </>
+      
+              <NewReport /> 
+
           }
         />
         <Route path="/" element={<App />} />

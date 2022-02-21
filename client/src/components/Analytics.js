@@ -26,7 +26,8 @@ const useStyles = makeStyles({
 		backgroundColor: 'white',
 		border: '1px solid lightgrey',
 		paddingTop: 10,
-		marginBottom: 19
+		marginBottom: 19,
+		paddingLeft: 15
 	}
 });
 
@@ -56,21 +57,55 @@ function AnalyticsStyled() {
 
 	return (
 		<Box className={classes.analyticsContainer}>
-			<Typography>
+			<Typography
+			variant='h6'
+				style={{
+					fontFamily: 'Comfortaa',
+					marginBottom:7
+				}}
+			>
 				<span class="material-icons">insights</span>Analytics
 			</Typography>
 			<Grid container direction="row" columns={2} spacing={2} className={classes.root}>
 				<Grid item>
 					<Grid className={classes.statSection}>
-						<p>Members</p>
-						<h2>{userCount}</h2>
+						<Typography
+						variant='body2'
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							members
+						</Typography>
+						<Typography
+						variant='h5'
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							{userCount}
+						</Typography>
 					</Grid>
 				</Grid>
 
 				<Grid item>
 					<Grid className={classes.statSection}>
-						<p>Reports</p>
-						<h2>{reportCount}</h2>
+						<Typography
+						variant='body2'
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							comments
+						</Typography>
+						<Typography
+						variant='h5'
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							{reportCount}
+						</Typography>
 					</Grid>
 					{/* <Grid className={classes.statSection}>
 						<p>Members</p>

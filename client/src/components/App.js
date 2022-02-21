@@ -10,10 +10,9 @@ import SideBar from './SideBar';
 import CommunityToday from './CommunityToday';
 import Authentication from './Authentication';
 
+import SignIn from './SignIn';
 
-import SignIn from './SignIn'
-
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const theme = createTheme({
 	palette: {
@@ -32,8 +31,6 @@ const useStyles = makeStyles({
 		justifyContent: 'center',
 		paddingTop: 25,
 		backgroundColor: '#DCE3E5'
-		
-
 	},
 	sideBar: {
 		marginRight: 100
@@ -53,15 +50,9 @@ export function GridContainerStyled() {
 	);
 }
 
-
-
 function App() {
-	return (
-		<Authentication />
-	);
+	return <Authentication />;
 }
-
-
 
 // function Businesses() {
 // 	return (

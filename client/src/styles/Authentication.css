@@ -1,4 +1,9 @@
 .logo-steps > span{
   font-size:100px;
   margin-bottom: 20px;
+  color:#FFFFFF;
+}
+
+.logo-steps {
+  color:#FFFFFF
 }
