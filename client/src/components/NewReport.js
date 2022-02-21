@@ -85,7 +85,6 @@ function NewReport() {
     });
     //retrieve businesses info
     let businessObj = {
-      // id: newBusinessID,
       category_id: category,
       name: data.get('Business Name'),
       city: data.get('City'),
@@ -97,7 +96,6 @@ function NewReport() {
     
     //retrieve services info
     let serviceObj = {
-      // id: newServiceID,
       category_id: category,
       name: data.get('Service'),
     };
@@ -105,49 +103,21 @@ function NewReport() {
     
     //retrieve reports info
     let reportObj = {
-      // id: newReportID,
-      // service_id: newServiceID,
       user_id: 1,
-      // business_id: newBusinessID,
       review: data.get('Review'),
       price: value,
       date: date
     }
-    console.log('reportObj', reportObj)
     
     //retrieve ratings info
     let ratingObj = {
-      // business_id: newBusinessID,
-      // report_id: newReportID,
       customer_service_rating: data.get('customer_service_rating'),
       product_rating: data.get('product_rating')
     }
-    console.log('ratingObj', ratingObj);
     
-    // function newBusiness() {
-      //   return axios.post('/businesses/new', businessObj);
-      // };
-      
-      // function newService() {
-        //   return axios.post('/services/new', serviceObj);
-        // }
-        
-        // function newReport() {
-          //   return axios.post('/reports/new', reportObj);
-    // }
-    
-    // function newRating() {
-    //   return axios.post('/ratings/new', ratingObj);
-    // }
-    
-    // newBusiness();
-    // newService();
-    // newReport();
-    // newRating();
     let businessId = '';
     axios.post('/businesses/new', businessObj)
     .then((res) => {
-      // console.log('creating service', res.data.id);
       businessId = res.data.id;
       return axios.post('/services/new', serviceObj);
     })
@@ -165,11 +135,9 @@ function NewReport() {
         ...ratingObj,
         business_id: businessId,
         report_id: res.data.id
-
       });
     })
     .catch((err) => {console.log(err)});
-
   };
 
   return (
