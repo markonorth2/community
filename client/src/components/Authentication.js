@@ -15,7 +15,7 @@ import earth from "../images/earth.jpg";
 const useStyles = makeStyles({
   authenticationEmail: {
     marginTop: 25,
-    width: 190
+    width: 190,
   },
   authenticationPassword: {
     marginTop: 10,
@@ -92,79 +92,86 @@ function Authentication() {
           marginTop: 80,
         }}
       >
-        <Typography variant="h3" align="center">
+        <Typography variant="h3" align="center" style={{ marginBottom: 100 }}>
           Welcome to Community, THE platform for consumers worldwide to gather
         </Typography>
-        <AuthenticationEmailStyled type={"email"} />
 
-        <AuthenticationPasswordStyled type={"password"} />
-        <LoginButtonStyled />
         <Button
           type="submit"
+          color="secondary"
           variant="contained"
           style={{
-            borderRadius: 35,
+            // borderRadius: 35,
             backgroundColor: "#21b6ae",
             padding: "18px 36px",
             fontSize: "18px",
-            width: 200
+            width: 500,
+            margin: "auto",
+            marginTop: 10,
+            marginBottom: 10,
           }}
-          href="/home"
+          href="/signin"
         >
           Sign In
         </Button>
         <Button
           type="submit"
-          
           variant="contained"
           sx={{ mt: 5, mb: 2 }}
           color="secondary"
-          href="/home"
+          href="/signup"
           style={{
-            borderRadius: 35,
+            // borderRadius: 35,
             backgroundColor: "#21b6ae",
             padding: "18px 36px",
             fontSize: "18px",
-            width: 200
+            width: 500,
+            margin: "auto",
+            marginTop: 10,
+            marginBottom: 10,
           }}
         >
           Create an account
         </Button>
         <Button
           type="submit"
-          
           variant="contained"
           sx={{ mt: 5, mb: 2 }}
           color="secondary"
           href="/home"
           style={{
-            borderRadius: 35,
+            // borderRadius: 35,
             backgroundColor: "#21b6ae",
             padding: "18px 36px",
             fontSize: "18px",
-            width: 200
+            width: 500,
+            margin: "auto",
+            marginTop: 10,
+            marginBottom: 10,
           }}
         >
           Explore the community
         </Button>
         <Button
           type="submit"
-         
+          align="center"
           variant="contained"
           sx={{ mt: 5, mb: 2 }}
           color="secondary"
-          href="/home"
+          href="/report"
           style={{
-            borderRadius: 35,
+            // borderRadius: 35,
             backgroundColor: "#21b6ae",
             padding: "18px 36px",
             fontSize: "18px",
-            width: 200
+            width: 500,
+            margin: "auto",
+            marginTop: 10,
+            marginBottom: 10,
           }}
         >
           Contribute to the community
         </Button>
-        <Link to="/home">Login</Link>
       </Box>
 
       <Box
@@ -189,13 +196,24 @@ function Authentication() {
             justifyContent: "center",
             paddingTop: 100,
             gridGap: 100,
+            
           }}
         >
           <Box className="logo-steps">
             <span class="material-icons">edit_note</span>
             <Typography>Create a report</Typography>
           </Box>
-          <Box className="logo-steps">
+          <Box
+            sx={{
+              display: "flex",
+              alignContent: "center",
+              flexDirection: "column",
+              justifyContent: "center",
+              bgcolor: "warning.main"
+              
+            }}
+            className="logo-steps"
+          >
             <span class="material-icons">question_answer</span>
             <Typography>Dicuss in the community</Typography>
           </Box>
