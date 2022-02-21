@@ -81,7 +81,7 @@ function NewReport() {
 						alignItems: 'center'
 					}}
 				>
-					<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+					<Avatar sx={{ m: 1, bgcolor: '#7CA352'  }}>
 						<TextSnippetIcon />
 					</Avatar>
 					<Typography component="h1" variant="h5">
@@ -218,7 +218,7 @@ function NewReport() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button variant="contained" component="label">
+                <Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
                   Upload Your Receipt
                   <input type="file" />
                 </Button>
@@ -239,7 +239,7 @@ function NewReport() {
 								/>
 							</Grid>
 							<Grid item xs={12}>
-								<Button variant="contained" component="label">
+								<Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
 									Upload Your Receipt
 									<input type="file" hidden />
 								</Button>
@@ -286,7 +286,7 @@ function NewReport() {
 							</Grid>
 						</Grid>
 
-						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2 }} href="/home">
+						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }} href="/home">
 							Submit Report
 						</Button>
 					</Box>

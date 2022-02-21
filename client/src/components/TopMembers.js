@@ -36,7 +36,9 @@ function TopMembers() {
 
 	return (
 		<Grid item lg={12} sm="none" xs={12} className="topMembers">
-			<Typography>
+			<Typography style={{
+								fontFamily: 'Comfortaa'
+							}}>
 				<span class="material-icons">leaderboard</span> Top Members
 			</Typography>
 			{memberList}

@@ -126,7 +126,13 @@ const ReportStyled = () => {
 					onClick={() => setStateFeed('POPULAR')}
 				>
 					<LocalFireDepartmentIcon />
-					Popular
+				<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							popular
+						</Typography>
 				</Button>
 				<Button
 					className={display === 'RECENT' ? 'selected' : 'unselected'}
@@ -134,7 +140,13 @@ const ReportStyled = () => {
 					onClick={() => setStateFeed('RECENT')}
 				>
 					<AccessTimeFilledIcon />
-					Recent
+					<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							recent
+						</Typography>
 				</Button>
 				<Button
 					className={display === 'YOUR_REPORTS' ? 'selected' : 'unselected'}
@@ -142,7 +154,13 @@ const ReportStyled = () => {
 					onClick={() => setStateFeed('YOUR_REPORTS')}
 				>
 					<ViewTimelineIcon />
-					Your Recent
+					<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							your recent
+						</Typography>
 				</Button>
 			</div>
 
