@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -34,7 +35,9 @@ const theme = createTheme();
 
 
 function SignIn() {
-	const handleSubmit = (event) => {
+	const navigate = useNavigate();
+  
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -43,16 +46,27 @@ function SignIn() {
       password: data.get('password'),
     });
 
-    return axios.get(`users/signin/${data.get('email')}`
-    )
+    let authObj = {
+      email: data.get('email'),
+      loginPassword: data.get('password')
+    }
+
+    return axios.post('users/signin', authObj)
+  
     //res.data[0].password is the password associated with the email entered
     .then((res) => {
-      const password = res.data[0].password;
-      console.log("password", password);
-      if (password === data.get('password')) {
-        console.log('password match, user can log in');
+      // const password = res.data[0].password;
+      // console.log("password", password);
+      // if (password === data.get('password')) {
+      //   console.log('password match, user can log in');
+      // } else {
+      //   console.log('password is incorrect');
+      // }
+      console.log('res.data', res.data)
+      if (res.data.authIsTrue) {
+        navigate('/home');
       } else {
-        console.log('password is incorrect');
+        console.log('password does not match with data base');
       }
     });
   };
