@@ -51,14 +51,14 @@ module.exports = (db) => {
   // create a new report
   router.post("/new", (req, response) => {
     //req.body is axios put command's second parameter
-    const { service_id, user_id, business_id, review, price, date } = req.body;
+    const { service_id, business_id, review, price, date } = req.body;
 
     db.query(
       `INSERT INTO reports (service_id, user_id, business_id, review, price, date)
       VALUES ($1::integer, $2::integer, $3::integer, $4::text, $5::money, $6::date)
       RETURNING id
     `,
-      [service_id, user_id, business_id, review, price, date]
+      [service_id, req.session.users_id, business_id, review, price, date]
     )
       .then((res) => {
         return response.json(res.rows[0]);

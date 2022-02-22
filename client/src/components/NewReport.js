@@ -88,7 +88,6 @@ function NewReport() {
     
     //retrieve reports info
     let reportObj = {
-      user_id: 1,
       review: data.get('Review'),
       price: value,
       date: date
@@ -124,9 +123,12 @@ function NewReport() {
         report_id: res.data.id
       });
     })
+    .then(() => {
+      navigate('/home');
+    })
     .catch((err) => {console.log(err)});
 
-    navigate('/home')
+    
   };
 
 	return (

@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -34,7 +35,10 @@ const theme = createTheme();
 
 
 function SignIn() {
-	const handleSubmit = (event) => {
+	const navigate = useNavigate();
+  const [auth, setAuth] = React.useState(true)
+  
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -43,16 +47,19 @@ function SignIn() {
       password: data.get('password'),
     });
 
-    return axios.get(`users/signin/${data.get('email')}`
-    )
-    //res.data[0].password is the password associated with the email entered
+    let authObj = {
+      email: data.get('email'),
+      loginPassword: data.get('password')
+    }
+
+    return axios.post('users/signin', authObj)
     .then((res) => {
-      const password = res.data[0].password;
-      console.log("password", password);
-      if (password === data.get('password')) {
-        console.log('password match, user can log in');
+      if (res.data.authIsTrue) {
+        navigate('/home');
       } else {
-        console.log('password is incorrect');
+     
+        setAuth(false);
+        navigate('/signin');
       }
     });
   };
@@ -94,7 +101,34 @@ function SignIn() {
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
+              {auth === false && 
+                <>
+                <TextField
+                error
+                margin="normal"
+                required
+                fullWidth
+                id="filled-error-helper-text"
+                label="Email Error"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+                <TextField
+                error
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password Error"
+                type="password"
+                id="filled-error-helper-text"
+                autoComplete="current-password"
+              />
+                </>}
+              {auth === true &&
+                <>
+                <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -114,6 +148,9 @@ function SignIn() {
                 id="password"
                 autoComplete="current-password"
               />
+              </>
+              }
+              
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
