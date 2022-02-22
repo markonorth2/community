@@ -36,6 +36,7 @@ const theme = createTheme();
 
 function SignIn() {
 	const navigate = useNavigate();
+  const [auth, setAuth] = React.useState(true)
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,21 +53,12 @@ function SignIn() {
     }
 
     return axios.post('users/signin', authObj)
-  
-    //res.data[0].password is the password associated with the email entered
     .then((res) => {
-      // const password = res.data[0].password;
-      // console.log("password", password);
-      // if (password === data.get('password')) {
-      //   console.log('password match, user can log in');
-      // } else {
-      //   console.log('password is incorrect');
-      // }
-      console.log('res.data', res.data)
       if (res.data.authIsTrue) {
         navigate('/home');
       } else {
-        console.log('password does not match with data base');
+     
+        setAuth(false);
         navigate('/signin');
       }
     });
@@ -109,7 +101,34 @@ function SignIn() {
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
+              {auth === false && 
+                <>
+                <TextField
+                error
+                margin="normal"
+                required
+                fullWidth
+                id="filled-error-helper-text"
+                label="Email Error"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+                <TextField
+                error
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password Error"
+                type="password"
+                id="filled-error-helper-text"
+                autoComplete="current-password"
+              />
+                </>}
+              {auth === true &&
+                <>
+                <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -129,6 +148,9 @@ function SignIn() {
                 id="password"
                 autoComplete="current-password"
               />
+              </>
+              }
+              
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
