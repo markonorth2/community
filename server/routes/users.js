@@ -60,9 +60,14 @@ module.exports = (db) => {
 
     db.query(
       `INSERT INTO users (first_name, last_name, email, user_name, password)
-       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text)`,
+       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text) 
+       RETURNING id`,
       [first_name, last_name, email, user_name, password]
     )
+      .then((id) => {
+        req.session.users_id = id;
+        return res.json(id);
+      })
       .catch(error => console.log(error));
   });
 

@@ -57,7 +57,6 @@ function SignIn() {
       if (res.data.authIsTrue) {
         navigate('/home');
       } else {
-     
         setAuth(false);
         navigate('/signin');
       }
