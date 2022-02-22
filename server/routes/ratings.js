@@ -20,6 +20,24 @@ module.exports = (db) => {
     });
   });
 
+  // create a new rating
+  router.post("/new", (req, response) => {
+    
+    //req.body is axios put command's second parameter
+    const { business_id, report_id, customer_service_rating, product_rating } = req.body;
+
+    db.query(
+      `INSERT INTO ratings (business_id, report_id, customer_service_rating, product_rating)
+      VALUES ($1::integer, $2::integer, $3::integer, $4::integer) RETURNING id
+    `,
+      [business_id, report_id, customer_service_rating, product_rating]
+    )
+    .then((res) => {
+      return response.json(res.rows[0])
+    })
+    .catch(error => console.log(error));
+  });
+
   // create/edit new rating - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed
   router.put("/:id", (req, res) => {
     

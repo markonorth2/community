@@ -11,10 +11,10 @@ CREATE TABLE businesses (
   country VARCHAR (255) NOT NULL,
   unit_number VARCHAR (255),
   street_address VARCHAR (255) NOT NULL,
-  postal_code VARCHAR (255) NOT NULL,
-  phone_number VARCHAR (255) NOT NULL,
-  website_url  VARCHAR (255) NOT NULL,
-  image_url VARCHAR (255) NOT NULL,
+  postal_code VARCHAR (255),
+  phone_number VARCHAR (255),
+  website_url  VARCHAR (255),
+  image_url VARCHAR (255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

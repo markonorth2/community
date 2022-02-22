@@ -24,9 +24,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'; // need to install with --legacy-peer-deps
 
 // date-fns
-import AdapterDateFns from '@mui/lab/AdapterDateFns'; // npm i @mui/lab
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
+import AdapterDateFns from "@mui/lab/AdapterDateFns"; // npm i @mui/lab
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import axios from "axios";
 
 // Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
@@ -52,22 +53,77 @@ const StyledRating = styled(Rating)({
 });
 
 function NewReport() {
-	const [ age, setAge ] = React.useState('');
-	const [ value, setValue ] = React.useState();
-	const [ date, setDate ] = React.useState(null);
-	const handleChange = (event) => {
-		setAge(event.target.value);
-	};
+  const [category, setCategory] = React.useState("");
+  const [value, setValue] = React.useState();
+  const [date, setDate] = React.useState(null);
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		// eslint-disable-next-line no-console
-		console.log({
-			email: data.get('email'),
-			password: data.get('password')
-		});
-	};
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    
+    //retrieve businesses info
+    let businessObj = {
+      category_id: category,
+      name: data.get('Business Name'),
+      city: data.get('City'),
+      province_state: data.get('Province'),
+      country: data.get('Country'),
+      street_address: data.get('Address')
+    };
+    console.log('businessObj', businessObj);
+    
+    //retrieve services info
+    let serviceObj = {
+      category_id: category,
+      name: data.get('Service'),
+    };
+    console.log('serviceObj', serviceObj);
+    
+    //retrieve reports info
+    let reportObj = {
+      user_id: 1,
+      review: data.get('Review'),
+      price: value,
+      date: date
+    }
+    console.log("reportObj", reportObj)
+    //retrieve ratings info
+    let ratingObj = {
+      customer_service_rating: data.get('customer_service_rating'),
+      product_rating: data.get('product_rating')
+    }
+    console.log("ratingObj", ratingObj)
+    //chaining axios to insert into four tables in order
+    let businessId = '';
+    axios.post('/businesses/new', businessObj)
+    .then((res) => {
+      console.log("axios businesses new")
+      businessId = res.data.id;
+      return axios.post('/services/new', serviceObj);
+    })
+    .then((res) => {
+      console.log('creating report', res.data.id);
+      return axios.post('/reports/new', {
+        ...reportObj,
+        business_id: businessId,
+        service_id: res.data.id
+      });
+    })
+    .then((res) => {
+      console.log('creating ratings', res);
+      return axios.post('/ratings/new', {
+        ...ratingObj,
+        business_id: businessId,
+        report_id: res.data.id
+      });
+    })
+    .catch((err) => {console.log(err)});
+  };
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -138,7 +194,7 @@ function NewReport() {
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
-									name="City"
+									name="Province"
 									required
 									fullWidth
 									id="city"
@@ -177,13 +233,13 @@ function NewReport() {
                   <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={age}
+                    value={category}
                     label="Category"
                     onChange={handleChange}
                   >
-                    <MenuItem value={10}>Dentistry</MenuItem>
-                    <MenuItem value={20}>Hospital care</MenuItem>
-                    <MenuItem value={30}>Massage</MenuItem>
+                    <MenuItem value={1}>Health Care</MenuItem>
+                    <MenuItem value={2}>Automobile Sales</MenuItem>
+                    <MenuItem value={3}>Education</MenuItem>
                     <MenuItem value="">
                       <em>Other</em>
                     </MenuItem>
@@ -286,7 +342,7 @@ function NewReport() {
 							</Grid>
 						</Grid>
 
-						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }} href="/home">
+						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }} >
 							Submit Report
 						</Button>
 					</Box>
