@@ -10,6 +10,14 @@ module.exports = (db) => {
     });
   });
 
+  	router.get('/count_users', (req, res) => {
+		const command = 'SELECT COUNT(*) FROM users';
+		db.query(command).then((data) => {
+			res.json(data.rows);
+		});
+	});
+
+
   // get value of a user by id
   router.get('/get/:id', (req, res) => {
     const command = `SELECT * FROM users

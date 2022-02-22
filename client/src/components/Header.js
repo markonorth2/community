@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 import '../styles/Header.css';
 
@@ -8,9 +9,6 @@ import { Toolbar } from '@material-ui/core';
 import { AppBar, Box, Typography } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 const theme = createTheme({
 	palette: {
@@ -33,14 +31,20 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 300,
-		marginTop: 10,
+		width: 400,
+		marginTop: 4,
 		marginLeft: 7
 	},
 	searchButton: {
 		marginLeft: 7,
 		height: 39,
-		marginTop: 10
+		marginTop: 4
+	},
+	logButtons: {
+		marginLeft: 7,
+		height: 39,
+		marginTop: 4,
+		width:70,
 	},
 	menu: {
 		width: 300,
@@ -54,15 +58,18 @@ const useStyles = makeStyles({
 		'& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
 			borderColor: '#FFFFFF'
 		},
-		width: 300,
-		marginTop: 10,
+		width: 250,
+		marginTop: 4,
 		marginLeft: 7
 	},
 
 	logo: {
-		color: "pink",
-		marginRight: 70
-		// alignItems: "left"
+		color: '#FFFFFF',
+		marginRight: 7,
+		'&:hover': {
+			color: '#DCE3E5'
+		},
+		fontFamily: 'Concert One'
 	}
 });
 
@@ -151,6 +158,38 @@ function SearchButtonStyled() {
 		</ThemeProvider>
 	);
 }
+function LoginButtonStyled() {
+	// const navigate = useNavigate()
+	const classes = useStyles();
+	return (
+		<ThemeProvider theme={theme}>
+			<Button
+				variant="contained"
+				color="secondary"
+				// onClick={() => navigate('/report')}
+				className={classes.logButtons}
+			>
+				Login
+			</Button>
+		</ThemeProvider>
+	);
+}
+function LogoutButtonStyled() {
+	// const navigate = useNavigate()
+	const classes = useStyles();
+	return (
+		<ThemeProvider theme={theme}>
+			<Button
+				variant="contained"
+				color="secondary"
+				// onClick={() => navigate('/report')}
+				className={classes.logButtons}
+			>
+				Logout
+			</Button>
+		</ThemeProvider>
+	);
+}
 
 // function MenuStyled() {
 // 	const classes = useStyles();
@@ -177,6 +216,7 @@ function SearchButtonStyled() {
 
 function Header() {
 	const classes = useStyles();
+	// const navigate = useNavigate();
 	return (
 		<ThemeProvider theme={theme}>
 			<AppBar position="static" className="appbar">
@@ -186,16 +226,18 @@ function Header() {
 							display: 'flex',
 							justifyContent: 'center',
 							flexDirection: 'row',
-							margin:"auto"
+							margin: 'auto'
 						}}
 					>
 						<Typography
-							variant="h3"
+							variant="h5"
 							noWrap
 							component="div"
 							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-							className= {classes.logo}
-							
+							className={classes.logo}
+							// onClick={() => {
+							// 	navigate('/')
+							// }}
 						>
 							Community
 						</Typography>
@@ -206,23 +248,41 @@ function Header() {
 						>
 							<TextFieldStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<CategorySearchStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<LocationFieldStyled />
 						</Box>
-						<Box sx={{
-							flexGrow:1
-						}}>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
 							<SearchButtonStyled />
 						</Box>
-
-						<span class="material-icons">account_circle</span>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
+							<LoginButtonStyled />
+						</Box>
+						<Box
+							sx={{
+								flexGrow: 1
+							}}
+						>
+							<LogoutButtonStyled />
+						</Box>
 					</Box>
 				</Toolbar>
 			</AppBar>

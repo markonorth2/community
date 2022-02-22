@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
@@ -30,7 +30,6 @@ function testAddEditAxios() {
 		image_url: 'null'
 	});
 }
-
 
 //sample template to Delete tables in server, delete for production
 // `users/1` means to delete the row with id = 1 in the users table
@@ -79,7 +78,14 @@ function SideBarStyled() {
 					<ListItemIcon>
 						<HomeIcon className={classes.icons} />
 
-						<ListItemText primary="Home" />
+						{/* <ListItemText primary="Home" /> */}
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Home
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 
@@ -94,7 +100,13 @@ function SideBarStyled() {
 					<ListItemIcon>
 						<span class="material-icons">public</span>
 
-						<ListItemText primary="Communities" />
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Communities
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 
@@ -109,7 +121,14 @@ function SideBarStyled() {
 					<ListItemIcon>
 						<CategoryIcon className={classes.icons} />
 						{/* For production, please delete contents inside the ( ) below  */}
-						<ListItemText primary="Categories (TEMP ADD/EDIT BUTTON)" />
+						{/* <ListItemText primary="Categories (TEMP ADD/EDIT BUTTON)" /> */}
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Categories
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 
@@ -124,7 +143,14 @@ function SideBarStyled() {
 					<ListItemIcon>
 						<span class="material-icons">medical_services</span>
 						{/* For production, please delete contents inside the ( ) below  */}
-						<ListItemText primary="Services (TEMP DELETE BUTTON)" />
+
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Services
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 
@@ -138,7 +164,14 @@ function SideBarStyled() {
 				>
 					<ListItemIcon>
 						<PeopleIcon className={classes.icons} />
-						<ListItemText primary="Friends" />
+						{/* <ListItemText primary="Friends" /> */}
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Friends
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 
@@ -151,7 +184,14 @@ function SideBarStyled() {
 				>
 					<ListItemIcon>
 						<span class="material-icons">help</span>
-						<ListItemText primary="Help" />
+						{/* <ListItemText primary="Help" /> */}
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Help
+						</Typography>
 					</ListItemIcon>
 				</ListItem>
 			</List>
