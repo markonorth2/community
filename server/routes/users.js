@@ -45,7 +45,7 @@ module.exports = (db) => {
   });
 
   // for sign-up page, create new user 
-  router.put('/', (req, res) => {
+  router.put('/new', (req, res) => {
     
     //req.body is axios put command's second parameter
     const { first_name, last_name, email, user_name, password, } = req.body;

@@ -1,30 +1,46 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
- 
+
 module.exports = (db) => {
   // get a list of all services
-  router.get('/', (req, res) => {
+  router.get("/", (req, res) => {
     const command = "SELECT * FROM services";
-    db.query(command).then(data => {
+    db.query(command).then((data) => {
       res.json(data.rows);
     });
   });
 
   // get value of a service by id
-  router.get('/:id', (req, res) => {
+  router.get("/:id", (req, res) => {
     const command = `SELECT * FROM services
-    WHERE id = $1::integer`; 
+    WHERE id = $1::integer`;
     const value = [req.params.id];
-    db.query(command, value).then(data => {
+    db.query(command, value).then((data) => {
       res.json(data.rows);
     });
   });
 
+  // create a new service
+  router.post("/new", (req, response) => {
+    //req.body is axios put command's second parameter
+    const { category_id, name } = req.body;
+
+    db.query(
+      `INSERT INTO services (category_id, name)
+      VALUES ($1::integer, $2::text) RETURNING id
+    `,
+      [category_id, name]
+    )
+      .then((res) => {
+        return response.json(res.rows[0]);
+      })
+      .catch((error) => console.log(error));
+  });
+
   // create/edit new service - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed
   router.put("/:id", (req, res) => {
-    
     //req.body is axios put command's second parameter
-    console.log('req.body', req.body)
+    console.log("req.body", req.body);
     const { category_id, name, image_url } = req.body;
 
     db.query(
@@ -34,16 +50,12 @@ module.exports = (db) => {
       UPDATE SET category_id = $1::integer, name = $2::text, image_url = $3::text, modified_at = CURRENT_TIMESTAMP
     `,
       [category_id, name, image_url, Number(req.params.id)]
-    )
-      .catch(error => console.log(error));
+    ).catch((error) => console.log(error));
   });
 
   //delete a service
   router.delete("/:id", (req, res) => {
-
-    db.query(`DELETE FROM services WHERE id = $1::integer`, [
-      req.params.id
-    ]);
+    db.query(`DELETE FROM services WHERE id = $1::integer`, [req.params.id]);
   });
 
   return router;
