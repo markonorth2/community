@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 	root: {
 		display: 'flex',
 		justifyContent: 'center',
-
+		padding:5,
 		marginBottom: 5
 	},
 	statSection: {

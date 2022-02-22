@@ -21,15 +21,18 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 
 import axios from 'axios';
+import { color } from '@mui/system';
 
 const useStyles = makeStyles({
 	report: {
-		marginRight: 100
+		marginRight: 100,
+
 	},
 	newReport: {
-		width: 611,
+		// width: 611,
 		marginBottom: 20,
-		backgroundColor: '#FFFFFF'
+		backgroundColor: '#FFFFFF',
+		width:"100%"
 	},
 	communityToday: {
 		marginBottom: 25
@@ -101,15 +104,48 @@ const ReportStyled = () => {
 							<MoreVertIcon />
 						</IconButton>
 					}
-					title={`BUSINESS NAME- TYPE OF SERVICE - ${report.price}`}
-					subheader={report.created_at}
+					// title={`BUSINESS NAME- TYPE OF SERVICE - ${report.price}`}
+					title={
+						<Typography
+							style={{
+								fontFamily: 'Comfortaa',
+								color: '#7CA352'
+							}}
+						>
+							BUSINESS NAME - TYPE OF SERVICE - {report.price}
+						</Typography>
+					}
+				
+					subheader={
+						<Typography
+						variant='subtitle2'
+							style={{
+								fontFamily: 'Comfortaa',
+								color: '#7CA352'
+							}}
+						>
+							{report.created_at.substr(0, 10)}
+						</Typography>
+					}
 				/>
 				<CardContent>
-					<Typography variant="body1" color="text.secondary">
-						{`Product Rating: 5.5`}
-						{/* {`Customer Service Rating: 9`} */}
+					<Typography
+						variant="subtitle2"
+						style={{
+							fontFamily: 'Comfortaa'
+						}}
+					>
+						{`Product: 5.5`}
+						<br />
+						{`Customer Service: 8.5`}
 					</Typography>
-					<Typography variant="body2" color="text.secondary">
+					<Typography
+						variant="subtitle1"
+						color="text.secondary"
+						style={{
+							fontFamily: 'Comfortaa'
+						}}
+					>
 						{report.review}
 					</Typography>
 				</CardContent>
@@ -126,13 +162,13 @@ const ReportStyled = () => {
 					onClick={() => setStateFeed('POPULAR')}
 				>
 					<LocalFireDepartmentIcon />
-				<Typography
-							style={{
-								fontFamily: 'Comfortaa'
-							}}
-						>
-							popular
-						</Typography>
+					<Typography
+						style={{
+							fontFamily: 'Comfortaa'
+						}}
+					>
+						popular
+					</Typography>
 				</Button>
 				<Button
 					className={display === 'RECENT' ? 'selected' : 'unselected'}
@@ -141,12 +177,12 @@ const ReportStyled = () => {
 				>
 					<AccessTimeFilledIcon />
 					<Typography
-							style={{
-								fontFamily: 'Comfortaa'
-							}}
-						>
-							recent
-						</Typography>
+						style={{
+							fontFamily: 'Comfortaa'
+						}}
+					>
+						recent
+					</Typography>
 				</Button>
 				<Button
 					className={display === 'YOUR_REPORTS' ? 'selected' : 'unselected'}
@@ -155,12 +191,12 @@ const ReportStyled = () => {
 				>
 					<ViewTimelineIcon />
 					<Typography
-							style={{
-								fontFamily: 'Comfortaa'
-							}}
-						>
-							your recent
-						</Typography>
+						style={{
+							fontFamily: 'Comfortaa'
+						}}
+					>
+						your recent
+					</Typography>
 				</Button>
 			</div>
 
