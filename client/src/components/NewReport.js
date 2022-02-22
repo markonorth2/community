@@ -124,9 +124,12 @@ function NewReport() {
         report_id: res.data.id
       });
     })
+    .then(() => {
+      navigate('/home');
+    })
     .catch((err) => {console.log(err)});
 
-    navigate('/home')
+    
   };
 
 	return (

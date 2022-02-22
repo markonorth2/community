@@ -37,16 +37,15 @@ module.exports = (db) => {
 
   //for sign-in page, return password by email as wildcard
   router.get('/signin/:email', (req, res) => {
-    const command = `SELECT password FROM users
+    const command = `SELECT password, id FROM users
     WHERE email = $1::text`; 
     const value = [req.params.email];
     db.query(command, value).then(data => {
       // password is the password from db
       // const password = data.rows[0].password;
-      // console.log('password', data.rows[0].password);
+      console.log('password', data.rows[0]);
       // const formPassword = req.query.formPassword;
       // console.log('req', req)
-      console.log("data.row", data.rows);
       res.json(data.rows);
     });
   });
