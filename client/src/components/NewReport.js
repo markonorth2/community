@@ -88,7 +88,6 @@ function NewReport() {
     
     //retrieve reports info
     let reportObj = {
-      user_id: 1,
       review: data.get('Review'),
       price: value,
       date: date

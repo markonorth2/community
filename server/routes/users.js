@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const app = express();
-const cookieSession = require('cookie-session');
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['1ws3rf']
-}));
+
  
 module.exports = (db) => {
   // get a list of all users
@@ -36,22 +31,29 @@ module.exports = (db) => {
   });
 
   //for sign-in page, return password by email as wildcard
-  router.get('/signin/:email', (req, res) => {
+  router.post('/signin', (req, res) => {
+    const { email, loginPassword } = req.body;
+
     const command = `SELECT password, id FROM users
     WHERE email = $1::text`; 
-    const value = [req.params.email];
+    const value = [email];
     db.query(command, value).then(data => {
-      // password is the password from db
-      // const password = data.rows[0].password;
-      console.log('password', data.rows[0]);
-      // const formPassword = req.query.formPassword;
-      // console.log('req', req)
-      res.json(data.rows);
+      let authIsTrue = null;
+      if (data.rows[0].password === loginPassword) {
+        authIsTrue = true;
+        console.log(authIsTrue);
+      }
+      console.log('data.rows[0]', data.rows[0]);
+     
+      console.log('req.session', req.session)
+      req.session.users_id = data.rows[0].id
+      console.log('req.session.users_id', req.session.users_id)
+      res.json({authIsTrue});
     });
   });
 
   // for sign-up page, create new user 
-  router.put('/new', (req, res) => {
+  router.post('/signup', (req, res) => {
     
     //req.body is axios put command's second parameter
     const { first_name, last_name, email, user_name, password, } = req.body;

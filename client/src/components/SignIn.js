@@ -67,6 +67,7 @@ function SignIn() {
         navigate('/home');
       } else {
         console.log('password does not match with data base');
+        navigate('/signin');
       }
     });
   };
