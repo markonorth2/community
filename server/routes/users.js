@@ -1,5 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
+const cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['1ws3rf']
+}));
  
 module.exports = (db) => {
   // get a list of all users

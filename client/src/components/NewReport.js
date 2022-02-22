@@ -28,6 +28,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns"; // npm i @mui/lab
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 // Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
@@ -60,6 +61,7 @@ function NewReport() {
     setCategory(event.target.value);
   };
 
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
 
@@ -123,6 +125,8 @@ function NewReport() {
       });
     })
     .catch((err) => {console.log(err)});
+
+    navigate('/home')
   };
 
 	return (
@@ -341,8 +345,13 @@ function NewReport() {
 								/>
 							</Grid>
 						</Grid>
-
-						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }} >
+            <Button 
+              type="submit" 
+              fullWidth 
+              variant="contained" 
+              sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }}
+              
+              >
 							Submit Report
 						</Button>
 					</Box>
