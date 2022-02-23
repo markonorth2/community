@@ -11,14 +11,14 @@ module.exports = (db) => {
   });
 
   router.get('/popular', (req, res) => {
-		const command = 'SELECT *, user_name FROM reports JOIN users ON user_id = users.id';
+		const command = 'SELECT reports.id, businesses.name as businessName, services.name as serviceName, ratings.customer_service_rating as serviceRating, ratings.product_rating as productRating, reports.review as review, users.user_name as userName, reports.price as price, reports.created_at as timestamp FROM reports JOIN businesses ON business_id = businesses.id JOIN users ON user_id = users.id JOIN services ON service_id = services.id JOIN ratings ON reports.id = report_id'
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
 	});
 
 	router.get('/recent', (req, res) => {
-		const command = 'SELECT * FROM reports JOIN users ON user_id = users.id ORDER BY reports.created_at DESC';
+		const command = 'SELECT reports.id, businesses.name as businessName, services.name as serviceName, ratings.customer_service_rating as serviceRating, ratings.product_rating as productRating, reports.review as review, users.user_name as userName, reports.price as price, reports.created_at as timestamp FROM reports JOIN businesses ON business_id = businesses.id JOIN users ON user_id = users.id JOIN services ON service_id = services.id JOIN ratings ON reports.id = report_id ORDER BY reports.created_at DESC';
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
@@ -111,11 +111,14 @@ SELECT * FROM reports JOIN users ON user_id = users.id
 
 
 // */
-// SELECT *
+// SELECT reports.id, businesses.name as businessName, services.name as serviceName, ratings.customer_service_rating as serviceRating, ratings.product_rating as productRating, reports.review as review, users.user_name as userName 
 // FROM reports
-// JOIN users ON user_id = users.id 
 // JOIN businesses ON business_id = businesses.id
+// JOIN users ON user_id = users.id 
 // JOIN services ON service_id = services.id
+// JOIN ratings ON reports.id = report_id;
+
+ 
 
 
 

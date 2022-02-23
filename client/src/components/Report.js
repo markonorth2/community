@@ -79,11 +79,11 @@ const ReportStyled = () => {
 					setDisplay(actionType);
 				});
 
-			case 'YOUR_REPORTS':
-				return axios.get(`/reports/your_reports`).then((reports) => {
-					setDisplayReport(reports.data);
-					setDisplay(actionType);
-				});
+			// case 'YOUR_REPORTS':
+			// 	return axios.get(`/reports/your_reports`).then((reports) => {
+			// 		setDisplayReport(reports.data);
+			// 		setDisplay(actionType);
+			// 	});
 
 			default:
 				return axios.get(`/reports/popular`).then((reports) => {
@@ -94,7 +94,8 @@ const ReportStyled = () => {
 	};
 
 	const singleReview = displayReport.map((report) => {
-		const letter = report.user_name[0];
+		console.log('reportt', report)
+		const letter = report.username[0]
 		return (
 			<div className="report">
 				<CardHeader
@@ -104,7 +105,6 @@ const ReportStyled = () => {
 							<MoreVertIcon />
 						</IconButton>
 					}
-					// title={`BUSINESS NAME- TYPE OF SERVICE - ${report.price}`}
 					title={
 						<Typography
 							style={{
@@ -112,7 +112,7 @@ const ReportStyled = () => {
 								color: '#7CA352'
 							}}
 						>
-							BUSINESS NAME - TYPE OF SERVICE - {report.price}
+							{report.businessname} - {report.servicename} - {report.price}
 						</Typography>
 					}
 				
@@ -124,7 +124,7 @@ const ReportStyled = () => {
 								color: '#7CA352'
 							}}
 						>
-							{report.created_at.substr(0, 10)}
+							{report.timestamp.substr(0, 10)}
 						</Typography>
 					}
 				/>
@@ -135,9 +135,9 @@ const ReportStyled = () => {
 							fontFamily: 'Comfortaa'
 						}}
 					>
-						{`Product: 5.5`}
+						Service Rating:   {report.servicerating}
 						<br />
-						{`Customer Service: 8.5`}
+						Product Rating:   {report.productrating}
 					</Typography>
 					<Typography
 						variant="subtitle1"
