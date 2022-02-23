@@ -128,6 +128,9 @@ function NewReport() {
         report_id: res.data.id
       });
     })
+		.then(() => {
+			return axios.get('reward_points/postreward')
+		})
     .then(() => {
       navigate('/home');
     })
