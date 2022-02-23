@@ -24,12 +24,12 @@ module.exports = (db) => {
 		});
 	});
 
-	router.get('/your_reports', (req, res) => {
-		const command = 'SELECT * FROM reports JOIN users ON user_id = users.id WHERE user_id = 1';
-		db.query(command).then((data) => {
-			res.json(data.rows);
-		});
-	});
+	// router.get('/your_reports', (req, res) => {
+	// 	const command = 'SELECT * FROM reports JOIN users ON user_id = users.id WHERE user_id = 1';
+	// 	db.query(command).then((data) => {
+	// 		res.json(data.rows);
+	// 	});
+	// });
 
 	router.get('/count_reports', (req, res) => {
 		const command = 'SELECT COUNT(*) FROM reports ';
@@ -105,4 +105,20 @@ SELECT * FROM reports JOIN users ON user_id = users.id ORDER BY reports.created_
 
 SELECT * FROM reports JOIN users ON user_id = users.id
 
-*/
+
+///
+
+
+
+// */
+// SELECT *
+// FROM reports
+// JOIN users ON user_id = users.id 
+// JOIN businesses ON business_id = businesses.id
+// JOIN services ON service_id = services.id
+
+
+
+
+
+//

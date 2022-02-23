@@ -11,6 +11,7 @@ import '../styles/SideBar.css';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import CategoryIcon from '@material-ui/icons/Category';
+import {Link} from "react-router-dom";
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
@@ -70,11 +71,12 @@ function SideBarStyled() {
 			<List className={classes.side}>
 				<ListItem
 					button
+					component={Link} to="/"
 					divider
 					className={classes.sideBarItem}
-					onClick={() => {
-						alert('clicked');
-					}}
+					// onClick={() => {
+					// 	alert('clicked');
+					// }}
 				>
 					<ListItemIcon>
 						<HomeIcon className={classes.icons} />
@@ -115,6 +117,7 @@ function SideBarStyled() {
 					button
 					divider
 					className={classes.sideBarItem}
+					component={Link} to="/categories"
 					onClick={() => {
 						testAddEditAxios();
 					}}
@@ -135,6 +138,7 @@ function SideBarStyled() {
 
 				<ListItem
 					button
+					component={Link} to="/services"
 					divider
 					className={classes.sideBarItem}
 					onClick={() => {
