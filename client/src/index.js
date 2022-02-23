@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import NewReport from "./components/NewReport";
 import { GridContainerStyled } from "./components/App";
 import SideBarStyled from "./components/SideBar";
+import Services from "./components/Services";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="/businesses" element={<Businesses />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
