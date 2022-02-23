@@ -98,7 +98,7 @@ function Authentication() {
           fontFamily:'Concert One'
 					}}
 				>
-					Welcome to Community, THE platform for EVERYONE to Gather and Create Economic Change!
+					Welcome to Community, THE platform for EVERYONE to Gather and bring power back to consumers' hands!
 				</Typography>
 
 				<Button
