@@ -135,6 +135,8 @@ const ReportStyled = () => {
 							fontFamily: 'Comfortaa'
 						}}
 					>
+						Date of Visit: {report.reportdate.substr(0, 10)}
+						<br />
 						Service Rating:   {report.servicerating}
 						<br />
 						Product Rating:   {report.productrating}
