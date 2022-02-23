@@ -61,7 +61,7 @@ module.exports = (db) => {
     )
       .then((data) => {
         req.session.users_id = data.rows[0].id;
-        return res.json(id);
+        return res.json(data);
       })
       .catch(error => console.log(error));
   });
