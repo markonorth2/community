@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router';
 
 import '../styles/Header.css';
@@ -75,6 +75,10 @@ const useStyles = makeStyles({
 
 function TextFieldStyled() {
 	const classes = useStyles();
+	const [ search, setSearch ] = useState('');
+	const handleSubmit = function () {
+		console.log("search", search)
+	}
 	return (
 		<TextField
 			id="outlined-basic"
@@ -93,6 +97,7 @@ function TextFieldStyled() {
 				}
 			}}
 			className={classes.businessSearch}
+			onChange={event => setSearch(event.target.value)}
 		/>
 	);
 }
