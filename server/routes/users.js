@@ -59,8 +59,8 @@ module.exports = (db) => {
        RETURNING id`,
       [first_name, last_name, email, user_name, password]
     )
-      .then((id) => {
-        req.session.users_id = id;
+      .then((data) => {
+        req.session.users_id = data.rows[0].id;
         return res.json(id);
       })
       .catch(error => console.log(error));

@@ -58,11 +58,5 @@ function App() {
 	return <Authentication />;
 }
 
-// function Businesses() {
-// 	return (
-// 			<Businesses />
-// 	);
-// }
-
 export default App;
-// export default Businesses;
+

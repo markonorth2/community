@@ -271,19 +271,6 @@ function NewReport() {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <CurrencyTextField
-                  label="Price of the service"
-                  variant="standard"
-                  value={value}
-                  currencySymbol="$"
-                  outputFormat="number"
-                  onChange={(event, value) => setValue(value)}
-                  placeholder="e.g., $50"
-                  textAlign="left"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12}>
                 <Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
                   Upload Your Receipt
                   <input type="file" />
@@ -304,13 +291,6 @@ function NewReport() {
 									fullWidth
 								/>
 							</Grid>
-							<Grid item xs={12}>
-								<Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
-									Upload Your Receipt
-									<input type="file" hidden />
-								</Button>
-							</Grid>
-
 							<Grid item xs={12}>
 								<TextField
 									fullWidth
@@ -441,21 +421,6 @@ function NewReport() {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <CurrencyTextField
-                  error
-									label="Error: Price of the service"
-                  variant="standard"
-                  value={value}
-                  currencySymbol="$"
-                  outputFormat="number"
-                  onChange={(event, value) => setValue(value)}
-                  placeholder="e.g., $50"
-                  textAlign="left"
-                  fullWidth
-									id="demo-simple-select-helper"
-                />
-              </Grid>
-              <Grid item xs={12}>
                 <Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
                   Upload Your Receipt
                   <input type="file" />
@@ -477,12 +442,6 @@ function NewReport() {
 									fullWidth
 									id="demo-simple-select-helper"
 								/>
-							</Grid>
-							<Grid item xs={12}>
-								<Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
-									Upload Your Receipt
-									<input type="file" hidden />
-								</Button>
 							</Grid>
 
 							<Grid item xs={12}>
