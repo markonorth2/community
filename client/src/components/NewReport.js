@@ -21,6 +21,8 @@ import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+import HeaderLogged from './HeaderLogged';
+
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'; // need to install with --legacy-peer-deps
 
 // date-fns
@@ -141,6 +143,8 @@ function NewReport() {
   };
 
 	return (
+		<>
+		<HeaderLogged />
 		<ThemeProvider theme={theme}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
@@ -543,6 +547,7 @@ function NewReport() {
 				<Copyright sx={{ mt: 5 }} />
 			</Container>
 		</ThemeProvider>
+		</>
 	);
 }
 

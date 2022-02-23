@@ -13,6 +13,7 @@ import Authentication from './Authentication';
 import SignIn from './SignIn';
 
 import { Link } from 'react-router-dom';
+import HeaderLogged from './HeaderLogged';
 
 const theme = createTheme({
 	palette: {
@@ -41,12 +42,15 @@ const useStyles = makeStyles({
 export function GridContainerStyled() {
 	const classes = useStyles();
 	return (
+		<>
+			<HeaderLogged />
 		<Grid container spacing={0} className={classes.root}>
 			<SideBar />
 			<Report />
 			<CommunityToday />
-			<Link to="/signin">logout</Link>
+		
 		</Grid>
+		</>
 	);
 }
 

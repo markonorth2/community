@@ -6,6 +6,8 @@ import { Box } from '@material-ui/core';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import '../styles/Authentication.css';
 
+import Header from './Header';
+
 import earth from '../images/earth.jpg';
 
 const useStyles = makeStyles({
@@ -69,6 +71,8 @@ function AuthenticationPasswordStyled() {
 
 function Authentication() {
 	return (
+		<>
+		<Header />
 		<Box
 			container
 			sx={{
@@ -224,6 +228,7 @@ function Authentication() {
 				</Box>
 			</Box>
 		</Box>
+		</>
 	);
 }
 

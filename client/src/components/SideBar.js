@@ -51,7 +51,8 @@ const theme = createTheme({
 
 const useStyles = makeStyles({
 	sideBar: {
-		marginRight: 125
+		marginRight: 125,
+		marginBottom:20
 	},
 	side: {
 		backgroundColor: 'white',
