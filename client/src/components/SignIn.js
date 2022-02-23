@@ -14,6 +14,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import Header from './Header';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,6 +66,8 @@ function SignIn() {
   };
   
   return (
+    	<>
+      <Header />
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -181,7 +185,7 @@ function SignIn() {
         </Grid>
       </Grid>
     </ThemeProvider>
-	
+</>
 	);
 }
 

@@ -184,7 +184,7 @@ const ReportStyled = () => {
 						recent
 					</Typography>
 				</Button>
-				<Button
+				{/* <Button
 					className={display === 'YOUR_REPORTS' ? 'selected' : 'unselected'}
 					size="large"
 					onClick={() => setStateFeed('YOUR_REPORTS')}
@@ -197,7 +197,7 @@ const ReportStyled = () => {
 					>
 						your recent
 					</Typography>
-				</Button>
+				</Button> */}
 			</div>
 
 			<div className="feed">

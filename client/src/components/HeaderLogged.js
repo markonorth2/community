@@ -10,6 +10,8 @@ import { AppBar, Box, Typography } from '@material-ui/core';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
+import { Link } from 'react-router-dom';
+
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -41,10 +43,8 @@ const useStyles = makeStyles({
 		marginTop: 4
 	},
 	logButtons: {
-		marginLeft: 7,
-		height: 39,
-		marginTop: 4,
-		width:70,
+		paddingLeft:10,
+		color:'white'
 	},
 	menu: {
 		width: 300,
@@ -158,63 +158,27 @@ function SearchButtonStyled() {
 		</ThemeProvider>
 	);
 }
-function LoginButtonStyled() {
-	// const navigate = useNavigate()
-	const classes = useStyles();
-	return (
-		<ThemeProvider theme={theme}>
-			<Button
-				variant="contained"
-				color="secondary"
-				// onClick={() => navigate('/report')}
-				className={classes.logButtons}
-			>
-				Login
-			</Button>
-		</ThemeProvider>
-	);
-}
+
 function LogoutButtonStyled() {
 	// const navigate = useNavigate()
 	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
-			<Button
+			{/* <Button
 				variant="contained"
 				color="secondary"
-				// onClick={() => navigate('/report')}
+				
+				// onClick={() => navigate('/')}
 				className={classes.logButtons}
 			>
 				Logout
-			</Button>
+			</Button> */}
+				<Link to="/signin" className={classes.logButtons}>logout</Link>
 		</ThemeProvider>
 	);
 }
 
-// function MenuStyled() {
-// 	const classes = useStyles();
-// 	return (
-// 		<FormControl color="primary" variant="outlined" size={'small'}>
-// 			<InputLabel id="demo-simple-select-label">Categories</InputLabel>
-// 			<Select
-// 				labelId="demo-simple-select-label"
-// 				id="demo-simple-select"
-// 				value={'Medical'}
-// 				label="Categories"
-// 				className={classes.menu}
-// 				color="#FFFFFF"
-// 				// onChange={handleChange}
-// 			>
-// 				<MenuItem value={'Medical'}>Medical</MenuItem>
-// 				<MenuItem value={'Technology'}>Technology</MenuItem>
-// 				<MenuItem value={'Engineering'}>Engineering</MenuItem>
-// 				<MenuItem value={'Costmetics'}>Costmetics</MenuItem>
-// 			</Select>
-// 		</FormControl>
-// 	);
-// }
-
-function Header() {
+function HeaderLogged() {
 	const classes = useStyles();
 	// const navigate = useNavigate();
 	return (
@@ -274,14 +238,14 @@ function Header() {
 								flexGrow: 1
 							}}
 						>
-							<LoginButtonStyled />
+							{/* <LoginButtonStyled /> */}
 						</Box>
 						<Box
 							sx={{
 								flexGrow: 1
 							}}
 						>
-							{/* <LogoutButtonStyled /> */}
+							<LogoutButtonStyled />
 						</Box>
 					</Box>
 				</Toolbar>
@@ -290,4 +254,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default HeaderLogged;
