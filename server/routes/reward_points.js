@@ -1,3 +1,4 @@
+const { json } = require('express');
 const express = require('express');
 const router = express.Router();
 
@@ -18,30 +19,27 @@ module.exports = (db) => {
 		});
 	});
 
-	// get value of a reward_point by id
-	router.get('/:id', (req, res) => {
-		const command = `SELECT * FROM reward_points
-    WHERE id = $1::integer`;
-		const value = [ req.params.id ];
-		db.query(command, value).then((data) => {
-			res.json(data.rows);
-		});
+	// add 10 reward_points to current user who submit a new post
+	router.get('/postreward', (req, res) => {
+    userID = req.session.users_id
+		db.query(
+			 `SELECT reward_point
+			  FROM reward_points
+				WHERE user_id = $1
+			 `, [userID])
+			 .then((data) => {
+        console.log('req.session.user_id', req.session.users_id)  
+				let value = data.rows[0].reward_point + 10;  
+				db.query(
+            `UPDATE reward_points 
+             SET reward_point = $1::integer`,
+			    	[ value ]
+		    	)
+					.then((data) => {
+						return res.json(data);
+					})
+			 })
+			 .catch((error) => console.log(error));	
 	});
-
-	// edit reward_points
-	router.put('/:id', (req, res) => {
-		//req.body is axios put command's second parameter
-		console.log('req.body', req.body);
-		const { reward_point } = req.body;
-
-		db
-			.query(
-				`UPDATE reward_points 
-       SET reward_point = $1::integer`,
-				[ reward_point ]
-			)
-			.catch((error) => console.log(error));
-	});
-
 	return router;
 };
