@@ -11,7 +11,7 @@ module.exports = (db) => {
   });
 
   router.get('/popular', (req, res) => {
-		const command = 'SELECT reports.id, businesses.name as businessName, services.name as serviceName, ratings.customer_service_rating as serviceRating, ratings.product_rating as productRating, reports.review as review, users.user_name as userName, reports.price as price, reports.created_at as timestamp FROM reports JOIN businesses ON business_id = businesses.id JOIN users ON user_id = users.id JOIN services ON service_id = services.id JOIN ratings ON reports.id = report_id';
+		const command = 'SELECT reports.id, businesses.name as businessName, services.name as serviceName, ratings.customer_service_rating as serviceRating, ratings.product_rating as productRating, reports.review as review, users.user_name as userName, reports.price as price, reports.created_at as timestamp FROM reports JOIN businesses ON business_id = businesses.id JOIN users ON user_id = users.id JOIN services ON service_id = services.id JOIN ratings ON reports.id = report_id'
 		db.query(command).then((data) => {
 			res.json(data.rows);
 		});
