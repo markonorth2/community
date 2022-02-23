@@ -39,15 +39,10 @@ module.exports = (db) => {
     const value = [email];
     db.query(command, value).then(data => {
       let authIsTrue = null;
-      if (data.rows[0].password === loginPassword) {
+      if (data.rows[0] && data.rows[0].password === loginPassword) {
         authIsTrue = true;
-        console.log(authIsTrue);
-      }
-      console.log('data.rows[0]', data.rows[0]);
-     
-      console.log('req.session', req.session)
-      req.session.users_id = data.rows[0].id
-      console.log('req.session.users_id', req.session.users_id)
+        req.session.users_id = data.rows[0].id;
+      } 
       res.json({authIsTrue});
     });
   });
