@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -31,7 +32,11 @@ function Copyright(props) {
 const theme = createTheme();
 
 function SignUp() {
-	const handleSubmit = (event) => {
+	const navigate = useNavigate();
+
+  const [filledForm, setFilledForm] = React.useState(true)
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -43,8 +48,16 @@ function SignUp() {
       user_name: data.get('userName')
     });
     let userObj = { first_name: data.get('firstName'), last_name: data.get('lastName'), user_name: data.get('userName'), password: data.get('password'), email: data.get('email') }
+    if (userObj.first_name && userObj.last_name && userObj.user_name && userObj.password && userObj.email) {
+      return axios.post('users/signup', userObj)
+      .then(() => {
+        navigate('/home')
+      })
+    } else {
+      setFilledForm(false);
+      navigate('/signup')
+    }
     
-    return axios.put('users/new', userObj)
   };
 
   return (
@@ -68,7 +81,9 @@ function SignUp() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
+          <Grid container spacing={2}>
+            {filledForm === true &&
+              <>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
@@ -121,6 +136,71 @@ function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
+            </>
+            }
+            
+            {filledForm === false &&
+              <>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  error
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="filled-error-helper-text"
+                  label="First Name Error"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  error
+                  required
+                  fullWidth
+                  id="filled-error-helper-text"
+                  label="Last Name Error"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error
+                  required
+                  fullWidth
+                  id="filled-error-helper-text"
+                  label="Email Address Error"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error
+                  required
+                  fullWidth
+                  id="filled-error-helper-text"
+                  label="Username Error"
+                  name="userName"
+                  autoComplete="username"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password Error"
+                  type="password"
+                  id="filled-error-helper-text"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </>
+            }
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}

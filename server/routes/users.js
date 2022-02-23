@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+
  
 module.exports = (db) => {
   // get a list of all users
@@ -29,32 +31,38 @@ module.exports = (db) => {
   });
 
   //for sign-in page, return password by email as wildcard
-  router.get('/signin/:email', (req, res) => {
-    const command = `SELECT password FROM users
+  router.post('/signin', (req, res) => {
+    const { email, loginPassword } = req.body;
+
+    const command = `SELECT password, id FROM users
     WHERE email = $1::text`; 
-    const value = [req.params.email];
+    const value = [email];
     db.query(command, value).then(data => {
-      // password is the password from db
-      // const password = data.rows[0].password;
-      // console.log('password', data.rows[0].password);
-      // const formPassword = req.query.formPassword;
-      // console.log('req', req)
-      console.log("data.row", data.rows);
-      res.json(data.rows);
+      let authIsTrue = null;
+      if (data.rows[0] && data.rows[0].password === loginPassword) {
+        authIsTrue = true;
+        req.session.users_id = data.rows[0].id;
+      } 
+      res.json({authIsTrue});
     });
   });
 
   // for sign-up page, create new user 
-  router.put('/new', (req, res) => {
+  router.post('/signup', (req, res) => {
     
     //req.body is axios put command's second parameter
     const { first_name, last_name, email, user_name, password, } = req.body;
 
     db.query(
       `INSERT INTO users (first_name, last_name, email, user_name, password)
-       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text)`,
+       VALUES ($1::text, $2::text, $3::text, $4::text, $5::text) 
+       RETURNING id`,
       [first_name, last_name, email, user_name, password]
     )
+      .then((id) => {
+        req.session.users_id = id;
+        return res.json(id);
+      })
       .catch(error => console.log(error));
   });
 

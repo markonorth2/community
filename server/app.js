@@ -13,8 +13,17 @@ const categoriesRouter = require('./routes/categories');
 const servicesRouter = require('./routes/services');
 const ratingsRouter = require('./routes/ratings');
 const reward_pointsRouter = require('./routes/reward_points');
+const cookieSession = require('cookie-session');
+
 
 const app = express();
+
+
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['1ws3rf']
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

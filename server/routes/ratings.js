@@ -36,6 +36,7 @@ module.exports = (db) => {
       return response.json(res.rows[0])
     })
     .catch(error => console.log(error));
+    
   });
 
   // create/edit new rating - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed

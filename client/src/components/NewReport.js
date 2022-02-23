@@ -28,6 +28,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns"; // npm i @mui/lab
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 // Need to use npm install --legacy-peer-deps when installing CurrencyTextField
 
@@ -56,10 +57,12 @@ function NewReport() {
   const [category, setCategory] = React.useState("");
   const [value, setValue] = React.useState();
   const [date, setDate] = React.useState(null);
-  const handleChange = (event) => {
+  const [filledForm, setFilledForm] = React.useState(true);
+	const handleChange = (event) => {
     setCategory(event.target.value);
   };
 
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
 
@@ -86,7 +89,6 @@ function NewReport() {
     
     //retrieve reports info
     let reportObj = {
-      user_id: 1,
       review: data.get('Review'),
       price: value,
       date: date
@@ -100,7 +102,9 @@ function NewReport() {
     console.log("ratingObj", ratingObj)
     //chaining axios to insert into four tables in order
     let businessId = '';
-    axios.post('/businesses/new', businessObj)
+
+    if (businessObj.name && businessObj.city && businessObj.province_state && businessObj.country && businessObj.street_address && serviceObj.name && reportObj.review && reportObj.price && reportObj.date && ratingObj.customer_service_rating && ratingObj.product_rating) {
+      axios.post('/businesses/new', businessObj)
     .then((res) => {
       console.log("axios businesses new")
       businessId = res.data.id;
@@ -122,7 +126,18 @@ function NewReport() {
         report_id: res.data.id
       });
     })
+    .then(() => {
+      navigate('/home');
+    })
     .catch((err) => {console.log(err)});
+		} else {
+			setFilledForm(false);
+			navigate('/report');
+		}
+
+    
+
+    
   };
 
 	return (
@@ -145,6 +160,8 @@ function NewReport() {
 					</Typography>
 					<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
 						<Grid container spacing={2}>
+							{filledForm === true &&
+							<>
 							<Grid item xs={12}>
 								<LocalizationProvider dateAdapter={AdapterDateFns}>
 									<DatePicker
@@ -249,17 +266,6 @@ function NewReport() {
                   </FormHelperText>
                 </FormControl>
               </Grid>
-              {/* <Grid item xs={12}>
-                <TextField 
-									type="number"
-                  required
-                  fullWidth
-                  id="price"
-                  label="Price (Please enter a number)"
-                  name="Price"
-									placeholder="e.g., 50"
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <CurrencyTextField
                   label="Price of the service"
@@ -312,7 +318,183 @@ function NewReport() {
 									placeholder="e.g., The massage felt really good. However, the masseuse had a really bad attitude. This is why I gave a good product rating but a bad customer service rating."
 								/>
 							</Grid>
+							</>
+							}
 
+              {filledForm === false &&
+							<>
+							<Grid item xs={12}>
+								<LocalizationProvider dateAdapter={AdapterDateFns}>
+									<DatePicker
+										error
+										fullWidth
+										label="Date of Visit Error"
+										value={date}
+										onChange={(newValue) => {
+											setDate(newValue);
+										}}
+										renderInput={(params) => <TextField {...params} />}
+									/>
+								</LocalizationProvider>
+							</Grid>
+
+							<Grid item xs={12}>
+								<TextField
+									error
+									name="Business Name"
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="Business Name Error"
+									autoFocus
+									placeholder="e.g., McDonald's"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									error
+									name="Address"
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="Address of Business Error"
+									autoFocus
+									placeholder="e.g., 9999 Finch Avenue"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									error
+									name="City"
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="City Error"
+									autoFocus
+									placeholder="e.g., Toronto or Log Angeles"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									error
+									name="Province"
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="Province/State Error"
+									autoFocus
+									placeholder="e.g., Ontario or California"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									error
+									name="Country"
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="Country Error"
+									autoFocus
+									placeholder="e.g., Canada or United States"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									error
+									required
+									fullWidth
+									id="filled-error-helper-text"
+									label="Service Received Error"
+									placeholder="e.g., X-ray or Teeth-Cleaning"
+									name="Service"
+								/>
+							</Grid>
+
+              <Grid item xs={12}>
+                <FormControl fullWidth={true}>
+                  <InputLabel 
+									  error
+										id="filled-error-helper-text">
+                    Category Error
+                  </InputLabel>
+                  <Select
+										labelId="filled-error-helper-text"
+                    
+                    value={category}
+                    label="Category"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={1}>Health Care</MenuItem>
+                    <MenuItem value={2}>Automobile Sales</MenuItem>
+                    <MenuItem value={3}>Education</MenuItem>
+                    <MenuItem value="">
+                      <em>Other</em>
+                    </MenuItem>
+                  </Select>
+                  <FormHelperText>
+                    Select a category that best fits the service received
+                  </FormHelperText>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <CurrencyTextField
+                  error
+									label="Error: Price of the service"
+                  variant="standard"
+                  value={value}
+                  currencySymbol="$"
+                  outputFormat="number"
+                  onChange={(event, value) => setValue(value)}
+                  placeholder="e.g., $50"
+                  textAlign="left"
+                  fullWidth
+									id="demo-simple-select-helper"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
+                  Upload Your Receipt
+                  <input type="file" />
+                </Button>
+               
+              </Grid>
+
+							<Grid item xs={12}>
+								<CurrencyTextField
+									error
+									label="Error: Price of the service"
+									variant="standard"
+									value={value}
+									currencySymbol="$"
+									outputFormat="number"
+									onChange={(event, value) => setValue(value)}
+									placeholder="e.g., $50"
+									textAlign="left"
+									fullWidth
+									id="demo-simple-select-helper"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<Button variant="contained" component="label" sx={{ bgcolor: '#7CA352'  }}>
+									Upload Your Receipt
+									<input type="file" hidden />
+								</Button>
+							</Grid>
+
+							<Grid item xs={12}>
+								<TextField
+									error
+									fullWidth
+									id="demo-simple-select-helper"
+									label="Error: Review (Describe your experience...)"
+									name="Review"
+									multiline={true}
+									rows={4}
+									placeholder="e.g., The massage felt really good. However, the masseuse had a really bad attitude. This is why I gave a good product rating but a bad customer service rating."
+								/>
+							</Grid>
+							</>
+							}
 							<Grid
 								item
 								xs={12}
@@ -322,6 +504,7 @@ function NewReport() {
 							>
 								<Typography component="legend">Customer Service Rating (Out of 10)</Typography>
 								<StyledRating
+									
 									name="customer_service_rating"
 									defaultValue={2}
 									max={10}
@@ -329,11 +512,16 @@ function NewReport() {
 									precision={0.5}
 									icon={<FavoriteIcon fontSize="inherit" />}
 									emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+									
 								/>
 								<Typography component="legend">Product Rating (Out of 10)</Typography>
-								<Rating name="product_rating" defaultValue={2} max={10} precision={0.5} />
+								<Rating 
+									name="product_rating" 
+									defaultValue={2} 
+									max={10} 
+									precision={0.5} 
+								/>
 							</Grid>
-
 							<Grid item xs={12}>
 								<FormControlLabel
 									control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -341,8 +529,13 @@ function NewReport() {
 								/>
 							</Grid>
 						</Grid>
-
-						<Button type="submit" fullWidth variant="contained" sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }} >
+            <Button 
+              type="submit" 
+              fullWidth 
+              variant="contained" 
+              sx={{ mt: 5, mb: 2, bgcolor: '#7CA352' }}
+              
+              >
 							Submit Report
 						</Button>
 					</Box>
