@@ -23,7 +23,6 @@ ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<LogoutButtonStyled />} />
 				<Route path="/home" element={<GridContainerStyled />} />
 				<Route path="/report" element={<NewReport />} />
 				<Route path="/" element={<App />} />

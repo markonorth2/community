@@ -71,6 +71,8 @@ function AuthenticationPasswordStyled() {
 
 function Authentication() {
 	return (
+		<>
+		<Header />
 		<Box
 			container
 			sx={{
@@ -226,6 +228,7 @@ function Authentication() {
 				</Box>
 			</Box>
 		</Box>
+		</>
 	);
 }
 
