@@ -54,6 +54,10 @@ function CreateReportField() {
 	);
 }
 
+const searchQuery = (search) => {
+
+}
+
 const ReportStyled = () => {
 	const classes = useStyles();
 	const [ display, setDisplay ] = useState('POPULAR');
@@ -93,8 +97,13 @@ const ReportStyled = () => {
 		}
 	};
 
-	const singleReview = displayReport.map((report) => {
-		console.log('reportt', report)
+	const singleReview = displayReport.filter((val) => {
+		console.log(val)
+		// if (val) {
+
+		// }
+	}).map((report) => {
+		console.log('report', report)
 		const letter = report.username[0]
 		return (
 			<div className="report">

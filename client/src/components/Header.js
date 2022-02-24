@@ -99,7 +99,11 @@ function TextFieldStyled() {
 				}
 			}}
 			className={classes.businessSearch}
-			onChange={event => setSearch(event.target.value)}
+			onChange={event => {
+				setSearch(event.target.value)
+				searchQuery(search)
+			
+			} }
 		/>
 	);
 }
