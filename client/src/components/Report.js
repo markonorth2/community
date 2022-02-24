@@ -176,8 +176,7 @@ const ReportStyled = (props) => {
 				<Button
 					className={display === 'POPULAR' ? 'selected' : 'unselected'}
 					size="large"
-					// onClick={() => setStateFeed('POPULAR')}
-					onClick={() => console.log('iamhere', props.search)}
+					onClick={() => setStateFeed('POPULAR')}
 				>
 					<LocalFireDepartmentIcon />
 					<Typography
