@@ -25,14 +25,13 @@ import { color } from '@mui/system';
 
 const useStyles = makeStyles({
 	report: {
-		marginRight: 100,
-
+		marginRight: 100
 	},
 	newReport: {
 		// width: 611,
 		marginBottom: 20,
 		backgroundColor: '#FFFFFF',
-		width:"100%"
+		width: '100%'
 	},
 	communityToday: {
 		marginBottom: 25
@@ -54,7 +53,9 @@ function CreateReportField() {
 	);
 }
 
-const ReportStyled = () => {
+const searchQuery = (search) => {};
+
+const ReportStyled = (props) => {
 	const classes = useStyles();
 	const [ display, setDisplay ] = useState('POPULAR');
 	const [ displayReport, setDisplayReport ] = useState([]);
@@ -69,7 +70,12 @@ const ReportStyled = () => {
 		switch (actionType) {
 			case 'POPULAR':
 				return axios.get(`/reports/popular`).then((reports) => {
+					console.log(props.search);
+
+					//sets data
 					setDisplayReport(reports.data);
+
+					//sets visual
 					setDisplay(actionType);
 				});
 
@@ -93,65 +99,76 @@ const ReportStyled = () => {
 		}
 	};
 
-	const singleReview = displayReport.map((report) => {
-		console.log('reportt', report)
-		const letter = report.username[0]
-		return (
-			<div className="report">
-				<CardHeader
-					avatar={<Avatar>{letter}</Avatar>}
-					action={
-						<IconButton aria-label="settings">
-							<MoreVertIcon />
-						</IconButton>
-					}
-					title={
+	const singleReview = displayReport
+		.filter((val) => {
+			const userSearch = props.search;
+			if (
+				val.businessname.toLowerCase().includes(userSearch.toLowerCase()) ||
+				val.servicename.toLowerCase().includes(userSearch.toLowerCase())
+			) {
+				return val;
+			}
+		})
+		.map((report) => {
+			console.log('report', report);
+			const letter = report.username[0];
+			return (
+				<div className="report">
+					<CardHeader
+						avatar={<Avatar>{letter}</Avatar>}
+						action={
+							<IconButton aria-label="settings">
+								<MoreVertIcon />
+							</IconButton>
+						}
+						title={
+							<Typography
+								style={{
+									fontFamily: 'Comfortaa',
+									color: '#7CA352'
+								}}
+							>
+								{report.businessname} - {report.servicename} - {report.price}
+							</Typography>
+						}
+						subheader={
+							<Typography
+								variant="subtitle2"
+								style={{
+									fontFamily: 'Comfortaa',
+									color: '#7CA352'
+								}}
+							>
+								{report.timestamp.substr(0, 10)}
+							</Typography>
+						}
+					/>
+					<CardContent>
 						<Typography
+							variant="subtitle2"
 							style={{
-								fontFamily: 'Comfortaa',
-								color: '#7CA352'
+								fontFamily: 'Comfortaa'
 							}}
 						>
-							{report.businessname} - {report.servicename} - {report.price}
+							Date of Visit: {report.reportdate.substr(0, 10)}
+							<br />
+							Service Rating: {report.servicerating}
+							<br />
+							Product Rating: {report.productrating}
 						</Typography>
-					}
-				
-					subheader={
 						<Typography
-						variant='subtitle2'
+							variant="subtitle1"
+							color="text.secondary"
 							style={{
-								fontFamily: 'Comfortaa',
-								color: '#7CA352'
+								fontFamily: 'Comfortaa'
 							}}
 						>
-							{report.timestamp.substr(0, 10)}
+							{report.review}
 						</Typography>
-					}
-				/>
-				<CardContent>
-					<Typography
-						variant="subtitle2"
-						style={{
-							fontFamily: 'Comfortaa'
-						}}
-					>
-						Service Rating:   {report.servicerating}
-						<br />
-						Product Rating:   {report.productrating}
-					</Typography>
-					<Typography
-						variant="subtitle1"
-						color="text.secondary"
-						style={{
-							fontFamily: 'Comfortaa'
-						}}
-					>
-						{report.review}
-					</Typography>
-				</CardContent>
-			</div>
-		);
-	});
+					</CardContent>
+				</div>
+			);
+		});
 	return (
 		<Grid item md={4} large={6} sm={6} xs={9} className={classes.report}>
 			<CreateReportField />
@@ -159,7 +176,8 @@ const ReportStyled = () => {
 				<Button
 					className={display === 'POPULAR' ? 'selected' : 'unselected'}
 					size="large"
-					onClick={() => setStateFeed('POPULAR')}
+					// onClick={() => setStateFeed('POPULAR')}
+					onClick={() => console.log('iamhere', props.search)}
 				>
 					<LocalFireDepartmentIcon />
 					<Typography
@@ -200,18 +218,11 @@ const ReportStyled = () => {
 				</Button> */}
 			</div>
 
-			<div className="feed">
-				<h2>{singleReview}</h2>
-			</div>
+			<div className="feed"><h2>{singleReview}</h2></div>
 		</Grid>
 	);
 };
 
-export default function Report() {
-	return <ReportStyled />;
+export default function Report(props) {
+	return <ReportStyled search={props.search} />;
 }
-
-
-
-
-

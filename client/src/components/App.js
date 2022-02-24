@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import '../styles/App.css';
@@ -14,6 +14,8 @@ import SignIn from './SignIn';
 
 import { Link } from 'react-router-dom';
 import HeaderLogged from './HeaderLogged';
+
+
 
 const theme = createTheme({
 	palette: {
@@ -40,13 +42,18 @@ const useStyles = makeStyles({
 
 // Container for all home page components
 export function GridContainerStyled() {
+	const [ search, setSearch ] = useState('');
+	// const handleSubmit = function () {
+	// 	console.log("search", search)
+	// }
 	const classes = useStyles();
+	const test = "I AM HERE"
 	return (
 		<>
-			<HeaderLogged />
-		<Grid container spacing={0} className={classes.root}>
+			<HeaderLogged setSearch={setSearch} />
+			<Grid container spacing={0} className={classes.root}>
 			<SideBar />
-			<Report />
+			<Report search={search} />
 			<CommunityToday />
 		
 		</Grid>
