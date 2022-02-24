@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import '../styles/Header.css';
 
 import Button from '@material-ui/core/Button';
@@ -43,8 +42,8 @@ const useStyles = makeStyles({
 		marginTop: 4
 	},
 	logButtons: {
-		paddingLeft:10,
-		color:'white'
+		paddingLeft: 10,
+		color: 'white'
 	},
 	menu: {
 		width: 300,
@@ -73,7 +72,7 @@ const useStyles = makeStyles({
 	}
 });
 
-function TextFieldStyled() {
+function TextFieldStyled(props) {
 	const classes = useStyles();
 	return (
 		<TextField
@@ -93,6 +92,9 @@ function TextFieldStyled() {
 				}
 			}}
 			className={classes.businessSearch}
+			onChange={(event) => {
+				props.setSearch(event.target.value);
+			}}
 		/>
 	);
 }
@@ -149,7 +151,7 @@ function SearchButtonStyled() {
 				variant="contained"
 				color="secondary"
 				onClick={() => {
-					alert('clicked');
+					alert('button clicked!');
 				}}
 				className={classes.searchButton}
 			>
@@ -173,14 +175,15 @@ function LogoutButtonStyled() {
 			>
 				Logout
 			</Button> */}
-				<Link to="/signin" className={classes.logButtons}>logout</Link>
+			<Link to="/signin" className={classes.logButtons}>
+				logout
+			</Link>
 		</ThemeProvider>
 	);
 }
 
-function HeaderLogged() {
+function HeaderLogged(props) {
 	const classes = useStyles();
-	// const navigate = useNavigate();
 	return (
 		<ThemeProvider theme={theme}>
 			<AppBar position="static" className="appbar">
@@ -200,17 +203,18 @@ function HeaderLogged() {
 							sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
 							className={classes.logo}
 							// onClick={() => {
-							// 	navigate('/')
+							// 	console.log(props.test);
 							// }}
 						>
 							Community
 						</Typography>
+
 						<Box
 							sx={{
 								flexGrow: 2
 							}}
 						>
-							<TextFieldStyled />
+							<TextFieldStyled setSearch={props.setSearch} />
 						</Box>
 						<Box
 							sx={{
