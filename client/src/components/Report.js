@@ -218,7 +218,7 @@ const ReportStyled = (props) => {
 				</Button> */}
 			</div>
 
-			<div className="feed">{/* <h2>{singleReview}</h2> */}</div>
+			<div className="feed"><h2>{singleReview}</h2></div>
 		</Grid>
 	);
 };
