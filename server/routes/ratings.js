@@ -28,7 +28,7 @@ module.exports = (db) => {
 
     db.query(
       `INSERT INTO ratings (business_id, report_id, customer_service_rating, product_rating)
-      VALUES ($1::integer, $2::integer, $3::integer, $4::integer) RETURNING id
+      VALUES ($1::integer, $2::integer, $3::decimal, $4::decimal) RETURNING id
     `,
       [business_id, report_id, customer_service_rating, product_rating]
     )
@@ -50,7 +50,7 @@ module.exports = (db) => {
       `INSERT INTO ratings (business_id, report_id, customer_service_rating, product_rating, id)
       VALUES ($1::integer, $2::integer, $3::integer, $4::integer, $5::integer)
       ON CONFLICT (id) DO
-      UPDATE SET business_id = $1::integer, report_id = $2::integer, customer_service_rating = $3::integer, product_rating = $4::integer
+      UPDATE SET business_id = $1::integer, report_id = $2::integer, customer_service_rating = $3::decimal, product_rating = $4::decimal
     `,
       [business_id, report_id, customer_service_rating, product_rating, Number(req.params.id)]
     )
