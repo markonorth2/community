@@ -38,7 +38,7 @@ module.exports = (db) => {
     WHERE email = $1::text`; 
     const value = [email];
     db.query(command, value).then(data => {
-      let authIsTrue = null;
+      let authIsTrue = false;
       if (data.rows[0] && data.rows[0].password === loginPassword) {
         authIsTrue = true;
         req.session.users_id = data.rows[0].id;
@@ -65,6 +65,12 @@ module.exports = (db) => {
       })
       .catch(error => console.log(error));
   });
+
+  //for login users out
+  router.post('/logout', (req, res) => {
+    req.session.users_id = null;
+  });
+  
 
   // create/edit new user - ON CONFLICT in the query command below is used to determine the cases either create new or edit existed
   router.put("/:id", (req, res) => {

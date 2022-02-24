@@ -6,6 +6,6 @@ CREATE TABLE ratings (
   id SERIAL PRIMARY KEY NOT NULL,
   business_id INTEGER REFERENCES businesses ON DELETE CASCADE,
   report_id INTEGER REFERENCES reports ON DELETE CASCADE,
-  customer_service_rating SMALLINT NOT NULL DEFAULT 0,
-  product_rating SMALLINT NOT NULL DEFAULT 0
+  customer_service_rating DECIMAL NOT NULL DEFAULT 0,
+  product_rating DECIMAL NOT NULL DEFAULT 0
 );

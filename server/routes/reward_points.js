@@ -32,8 +32,9 @@ module.exports = (db) => {
 				let value = data.rows[0].reward_point + 10;  
 				db.query(
             `UPDATE reward_points 
-             SET reward_point = $1::integer`,
-			    	[ value ]
+             SET reward_point = $1::integer
+						 WHERE user_id = $2`,
+			    	[ value, userID ]
 		    	)
 					.then((data) => {
 						return res.json(data);

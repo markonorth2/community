@@ -264,6 +264,9 @@ function NewReport() {
                     <MenuItem value={1}>Health Care</MenuItem>
                     <MenuItem value={2}>Automobile Sales</MenuItem>
                     <MenuItem value={3}>Education</MenuItem>
+										<MenuItem value={4}>Restaurant</MenuItem>
+										<MenuItem value={5}>Garden</MenuItem>
+										<MenuItem value={6}>Home Repair</MenuItem>
                     <MenuItem value="">
                       <em>Other</em>
                     </MenuItem>
@@ -414,6 +417,9 @@ function NewReport() {
                     <MenuItem value={1}>Health Care</MenuItem>
                     <MenuItem value={2}>Automobile Sales</MenuItem>
                     <MenuItem value={3}>Education</MenuItem>
+										<MenuItem value={4}>Restaurant</MenuItem>
+										<MenuItem value={5}>Garden</MenuItem>
+										<MenuItem value={6}>Home Repair</MenuItem>
                     <MenuItem value="">
                       <em>Other</em>
                     </MenuItem>

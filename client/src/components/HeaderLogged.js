@@ -176,7 +176,7 @@ function LogoutButtonStyled() {
 				Logout
 			</Button> */}
 			<Link to="/signin" className={classes.logButtons}>
-				logout
+				Logout
 			</Link>
 		</ThemeProvider>
 	);
