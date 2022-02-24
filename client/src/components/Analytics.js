@@ -75,7 +75,7 @@ function AnalyticsStyled() {
 								fontFamily: 'Comfortaa'
 							}}
 						>
-							members
+							Members
 						</Typography>
 						<Typography
 						variant='h5'
@@ -96,7 +96,7 @@ function AnalyticsStyled() {
 								fontFamily: 'Comfortaa'
 							}}
 						>
-							comments
+							Reports
 						</Typography>
 						<Typography
 						variant='h5'
