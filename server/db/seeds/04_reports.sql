@@ -8,5 +8,7 @@ VALUES (1, 1, 1, 'This location is clean. Workers are friendly and professional.
 (11, 3, 6, 'The plumber is intelligent. He got to it and fixed my leak quickly', 200, '2022-01-20', 'www.receipt.com'),
 (2, 4, 1, 'I fractured my hands while climbing the tree. Doctor here fix my fracture really quickly! They are very gentle. The nurses here are also very good.', 2000, '2022-01-15', 'www.receipt.com'),
 (4, 6, 2, 'I am Warren Buffet and I decided to buy a Lamborghini. I visited ABC Grand Touring. Sales people here are efficient. I got my car right away. The car is clean when they drop it off at the door', 300000, '2021-06-20', 'www.receipt.com'),
-(10, 6, 5, 'I am Warren Buffet, and I need some trees cut down in front of my house. I hire these people and they remove the trees. Nicely done', 1000, '2021-10-10', 'www.receipt.com');
+(11, 6, 7, 'I am Warren Buffet, and I need some help with my sink and these guys showed up and fixed my issues! They are decent but a bit expensive', 350, '2021-10-10', 'www.receipt.com'),
+(11, 5, 8, 'The guy broke my toilet that was working before he showed up. He is impolite and rude! Avoid!!!!', 100, '2022-02-01', 'www.receipt.com'),
+(11, 4, 9, 'My house is flooded because of ZZZ Plumbing! They are not good', 100, '2022-02-01', 'www.receipt.com');
 
