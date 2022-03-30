@@ -24,7 +24,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       
-        Created by Daniel Lu, Mark Chuang, Jaylen Patterson. Full Stack Developers.
+        Created by Daniel Lu, Mark Chuang, Jaylen Patterson. Full Stack Software Developers.
       {" "}
       {new Date().getFullYear()}
       {'.'}
