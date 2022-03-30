@@ -12,4 +12,4 @@ VALUES (1, 'Massage Therapy', 'https://images.pexels.com/photos/6663361/pexels-p
 (5, 'Landscaping', ''),
 (5, 'Tree Removal', ''),
 (6, 'Plumbing', ''),
-(6, 'Home Appliances', '');
+(6, 'Home Appliances Repair', '');

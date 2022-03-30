@@ -23,6 +23,8 @@ import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 import axios from 'axios';
 import { color } from '@mui/system';
 
+import { Rating } from '@mui/material';
+
 const useStyles = makeStyles({
 	report: {
 		marginRight: 100
@@ -35,6 +37,12 @@ const useStyles = makeStyles({
 	},
 	communityToday: {
 		marginBottom: 25
+	},
+	highRating: {
+		color: '#6096BA;'
+	},
+	lowRating: {
+		color: 'orange'
 	}
 });
 
@@ -149,12 +157,19 @@ const ReportStyled = (props) => {
 							style={{
 								fontFamily: 'Comfortaa'
 							}}
+							className={report.productrating && report.servicerating > 5 ? classes.highRating : classes.lowRating}
 						>
-							Date of Visit: {report.reportdate.substr(0, 10)}
+							Product Rating: {report.productrating}
 							<br />
 							Service Rating: {report.servicerating}
-							<br />
-							Product Rating: {report.productrating}
+						</Typography>
+						<Typography
+							variant="subtitle2"
+							style={{
+								fontFamily: 'Comfortaa'
+							}}
+						>
+							Date of Visit: {report.reportdate.substr(0, 10)}
 						</Typography>
 						<Typography
 							variant="subtitle1"
@@ -217,7 +232,9 @@ const ReportStyled = (props) => {
 				</Button> */}
 			</div>
 
-			<div className="feed"><h2>{singleReview}</h2></div>
+			<div className="feed">
+				<h2>{singleReview}</h2>
+			</div>
 		</Grid>
 	);
 };
