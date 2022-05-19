@@ -19,7 +19,6 @@ GIVE POWER BACK TO CONSUMERS FROM BUSINESSES
 - React Router V6 
 - Material UI 
 - Nodemon
-- Redux v4.1.2
 - Axios v0.26.0
 - Bcrypt v5.0.1
 - PostgreSQL
